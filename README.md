@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
 
-![alt-text] (https://images.zmangames.com/filer_public/51/f3/51f3daa8-4f28-438f-8ba4-09c19894e127/zm7810_layout.png)
+![alt-text](https://images.zmangames.com/filer_public/51/f3/51f3daa8-4f28-438f-8ba4-09c19894e127/zm7810_layout.png)
 
 ## Development server
 
