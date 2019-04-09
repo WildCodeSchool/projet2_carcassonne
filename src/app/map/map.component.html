@@ -1,0 +1,7 @@
+<div class="container">
+  <div *ngIf="cases">
+      <div class="row" *ngFor="let row of cases">
+          <div *ngFor="let c of row" class="cell"></div>
+      </div>
+  </div>
+</div>
