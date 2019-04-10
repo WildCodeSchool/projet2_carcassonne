@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import { Tuiles } from './tuiles';
-import { TUILES } from './tuilesData';
+import { DeckService } from './deck.service';
 
 
 @Injectable({
@@ -9,5 +7,12 @@ import { TUILES } from './tuilesData';
 })
 export class GameService {
 
-  constructor() { }
+  currentTile = undefined
+
+  constructor(private service: DeckService) { }
+
+  pickedTile() {
+    
+    this.currentTile = this.service.pickTile()
+  }
 }
