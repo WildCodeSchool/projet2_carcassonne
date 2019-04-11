@@ -8,19 +8,24 @@ import { Component, OnInit } from '@angular/core';
 export class MapComponent implements OnInit {
 
   cases = undefined
-  startTile = '../../assets/img/start.png'
-  startTilePosition = [0][0]
-
+  startTile = '../assets/Tiles/start.png'
+ 
   constructor() { }
-
+ 
   ngOnInit() {
     this.cases = []
-    for (let i = -72; i < 72; i++) {
+    for (let i = 0; i < 144; i++) {
       this.cases[i] = []
-      for (let j = -72; j < 72; j++) {
+      for (let j = 0; j < 144; j++) {
         this.cases[i][j] = undefined
       }
     }
-
+    this.cases[72][72] = this.startTile
   }
-}
+ }
+
+
+
+
+
+ 
