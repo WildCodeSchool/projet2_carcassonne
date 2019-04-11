@@ -1,0 +1,12 @@
+.row {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+}
+.cell {
+ 
+  display: block;
+  height: 80px;
+  width: 80px;
+  border: solid black 1px;
+}
