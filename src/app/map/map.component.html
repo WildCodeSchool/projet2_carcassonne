@@ -1,7 +1,8 @@
 <div class="container">
   <div *ngIf="cases">
     <div class="row" *ngFor="let row of cases; let i=index">
-      <div *ngFor="let c of row; let j=index" class="cell" (click)="onTileClick(j,i)"><img src="{{c}}" class='tuile' alt=""></div>
+      <div *ngFor="let c of row; let j=index" class="cell" (click)="onTileClick(i,j)">
+        <img src="{{c}}" class='tuile' alt=""></div>
     </div>
   </div>
  </div>

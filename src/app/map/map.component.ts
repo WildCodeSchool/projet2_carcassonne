@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DeckService } from '../deck.service';
+import { GameService } from '../game.service';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-map',
@@ -8,24 +11,25 @@ import { Component, OnInit } from '@angular/core';
 export class MapComponent implements OnInit {
 
   cases = undefined
-  startTile = '../assets/Tiles/start.png'
- 
-  constructor() { }
- 
+
+  constructor(private deck: DeckService, private game: GameService, private map: MapService) { }
+
   ngOnInit() {
-    this.cases = []
-    for (let i = 0; i < 144; i++) {
-      this.cases[i] = []
-      for (let j = 0; j < 144; j++) {
-        this.cases[i][j] = undefined
-      }
-    }
-    this.cases[72][72] = this.startTile
+    this.cases = this.map.generateMap()
   }
- }
+
+  onTileClick(i, j) {
+    console.log(`Je suis la cellule l'index ${[i]} et ${[j]}`)
+    console.log(this.cases)
+
+    return this.cases.splice(i, 0, "test")
+     
+
+  }
+
+}
 
 
 
 
 
- 

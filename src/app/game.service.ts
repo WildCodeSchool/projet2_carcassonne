@@ -19,8 +19,7 @@ export class GameService {
       else { 
         this.totalTile -= 1 
       }
-      // console.log("taille du tableau après pioche :")
-      // console.log(tilesDeck.length)
+       console.log("taille du tableau après pioche :")
+       console.log(tilesDeck.length)
   }
-
 }
