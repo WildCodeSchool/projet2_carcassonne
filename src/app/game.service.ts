@@ -18,7 +18,6 @@ export class GameService {
   pickedTile() {
     this.currentTile = this.deck.pickTile()
     if (this.totalTile === 0) { return }
-
       else { 
         this.totalTile -= 1 
       }
@@ -27,13 +26,9 @@ export class GameService {
   }
 
     
-  //-----------------------------debut partie mehdi rotation 90° carte-------------------------
   rotationTile() {
-
     this.currentTileRotation = (this.currentTileRotation + 90) % 360;
     return this.currentTileRotation
-
-
   }
   //-----------------------------fin partie mehdi rotation 90° carte--------------------------
 

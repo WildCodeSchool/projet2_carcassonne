@@ -17,10 +17,10 @@ export class PiocheComponent implements OnInit {
   ngOnInit() {
 
   }
-  //--------------------------debut partie mehdi rotation 90° carte-------------------------
+  
   rotateTile() {
     this.tileRotation = this.game.rotationTile()
-    console.log(`tile Rotation ${this.tileRotation}`);
+    // console.log(`tile Rotation ${this.tileRotation}`);
   }
-  //--------------------------fin partie mehdi rotation 90° carte---------------------------
+
 }

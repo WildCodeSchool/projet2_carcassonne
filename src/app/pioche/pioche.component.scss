@@ -1,3 +1,5 @@
+/* Style des boutons */
+
 button {
   display: inline-block;
   padding: 15px 25px;
@@ -23,6 +25,9 @@ button:active {
   transform: translateY(4px);
 }
 
+
+/* Taille de la tuile de la pioche */
+
 img {
   width: 300px;
 }
@@ -30,19 +35,18 @@ img {
 .pioche {
   width: 50%;
 }
-/*-------------------------debut css rotation tuile mehdi*------------------------------*/
+
+/* CSS pour la rotation de la tuile */
+
 #container {
   overflow: hidden;
 }
 
 #image {
   transform-origin: top left;
-  /* IE 10+, Firefox, etc. 
-  -webkit-transform-origin: top left;
-  /* Chrome */
   -ms-transform-origin: top left;
-  /* IE 9 */
 }
+
 .rotate90 {
   transform: rotate(90deg) translateY(-100%);
   -webkit-transform: rotate(90deg) translateY(-100%);
@@ -58,5 +62,3 @@ img {
   -webkit-transform: rotate(270deg) translateX(-100%);
   -ms-transform: rotate(270deg) translateX(-100%);
 }
-
-/*--------------------------fin css rotation tuile mehdi-----------------------------------*/
