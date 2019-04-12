@@ -1,6 +1,17 @@
-<div> 
-  <button (click)="game.pickedTile()">Piocher : {{game.totalTile}} tuiles restantes</button>
-  <br><br>
-  <img *ngIf="game.currentTile" [src]="game.currentTile.img">
-</div>
+<div>
 
+    <button (click)="game.pickedTile()">
+        Piocher : {{game.totalTile}} tuiles restantes
+    </button>
+    <br>
+    <br>
+    <img
+        *ngIf="game.currentTile"
+        id="image"
+        [src]="game.currentTile.img"
+        [ngClass]="{'rotate90': tileRotation == 90 , 'rotate180': tileRotation == 180, 'rotate270': tileRotation == 270}">
+
+    <br>
+    <br>
+</div>
+<button (click)="rotateTile()">Pivoter la tuile!</button>

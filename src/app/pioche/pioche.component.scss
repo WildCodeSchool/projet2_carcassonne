@@ -1,19 +1,21 @@
 button {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 18px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 9px #999;
-  }
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+}
 
-button:hover {background-color: #3e8e41}
+button:hover {
+  background-color: #3e8e41;
+}
 
 button:active {
   background-color: #3e8e41;
@@ -22,9 +24,39 @@ button:active {
 }
 
 img {
-    width: 300px;
-  }
+  width: 300px;
+}
 
 .pioche {
-    width: 50%;
+  width: 50%;
 }
+/*-------------------------debut css rotation tuile mehdi*------------------------------*/
+#container {
+  overflow: hidden;
+}
+
+#image {
+  transform-origin: top left;
+  /* IE 10+, Firefox, etc. 
+  -webkit-transform-origin: top left;
+  /* Chrome */
+  -ms-transform-origin: top left;
+  /* IE 9 */
+}
+.rotate90 {
+  transform: rotate(90deg) translateY(-100%);
+  -webkit-transform: rotate(90deg) translateY(-100%);
+  -ms-transform: rotate(90deg) translateY(-100%);
+}
+.rotate180 {
+  transform: rotate(180deg) translate(-100%, -100%);
+  -webkit-transform: rotate(180deg) translate(-100%, -100%);
+  -ms-transform: rotate(180deg) translateX(-100%, -100%);
+}
+.rotate270 {
+  transform: rotate(270deg) translateX(-100%);
+  -webkit-transform: rotate(270deg) translateX(-100%);
+  -ms-transform: rotate(270deg) translateX(-100%);
+}
+
+/*--------------------------fin css rotation tuile mehdi-----------------------------------*/
