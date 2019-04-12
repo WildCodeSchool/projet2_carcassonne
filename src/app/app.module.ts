@@ -6,6 +6,7 @@ import { MapComponent } from './map/map.component';
 import { GameService } from './game.service';
 import { DeckService } from './deck.service';
 import { PiocheComponent } from './pioche/pioche.component';
+import { MapService } from './map.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { PiocheComponent } from './pioche/pioche.component';
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [GameService, DeckService],
+  providers: [GameService, DeckService, MapService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

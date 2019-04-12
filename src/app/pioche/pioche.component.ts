@@ -9,11 +9,18 @@ import { DeckService } from '../deck.service';
 })
 export class PiocheComponent implements OnInit {
 
+  tileRotation = 0
+
   constructor(private game: GameService, private deck: DeckService) { }
 
 
   ngOnInit() {
-    
+
+  }
+  
+  rotateTile() {
+    this.tileRotation = this.game.rotationTile()
+    // console.log(`tile Rotation ${this.tileRotation}`);
   }
 
 }

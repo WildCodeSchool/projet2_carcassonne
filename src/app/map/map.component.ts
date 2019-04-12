@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DeckService } from '../deck.service';
+import { GameService } from '../game.service';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-map',
@@ -8,19 +11,18 @@ import { Component, OnInit } from '@angular/core';
 export class MapComponent implements OnInit {
 
   cases = undefined
-  startTile = '../../assets/img/start.png'
-  startTilePosition = [0][0]
 
-  constructor() { }
+  constructor(private deck: DeckService, private game: GameService, private map: MapService) { }
 
   ngOnInit() {
-    this.cases = []
-    for (let i = -72; i < 72; i++) {
-      this.cases[i] = []
-      for (let j = -72; j < 72; j++) {
-        this.cases[i][j] = undefined
-      }
-    }
-
+    this.cases = this.map.generateMap()
   }
+
+  
+
 }
+
+
+
+
+
