@@ -18,14 +18,7 @@ export class MapComponent implements OnInit {
     this.cases = this.map.generateMap()
   }
 
-  onTileClick(i, j) {
-    console.log(`Je suis la cellule l'index ${[i]} et ${[j]}`)
-    console.log(this.cases)
-
-    return this.cases.splice(i, 0, "test")
-     
-
-  }
+  
 
 }
 

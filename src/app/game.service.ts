@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DeckService } from './deck.service';
 import { tilesDeck } from './tuilesData';
-import * as $ from 'jquery';
+import { MapService } from './map.service';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class GameService {
   currentTile = undefined
   totalTile: number = tilesDeck.length
 
-  constructor(private deck: DeckService) { }
+  constructor(private deck: DeckService, private map: MapService) { }
 
   pickedTile() {
     this.currentTile = this.deck.pickTile()
@@ -37,5 +37,8 @@ export class GameService {
   }
   //-----------------------------fin partie mehdi rotation 90° carte--------------------------
 
+  onTileClick(i, j) {
+    this.map.cases[i][j] = this.currentTile
+  }
 
 }
