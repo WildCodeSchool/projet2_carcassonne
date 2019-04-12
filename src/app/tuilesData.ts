@@ -3,7 +3,7 @@ export class Tuile {
 
     constructor (
     public name: string,
-    public img: string,
+    public img: any,
     public top: string,
     public right: string,
     public bottom: string,

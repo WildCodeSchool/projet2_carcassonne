@@ -19,7 +19,7 @@ export class MapService {
         this.cases[i][j] = undefined
       }
     }
-    this.cases[72][72] = tilesDeck[0]
+    this.cases[72][72] = tilesDeck[31]
     return this.cases
   }
 
