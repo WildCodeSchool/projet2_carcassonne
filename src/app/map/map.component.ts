@@ -15,15 +15,16 @@ export class MapComponent implements OnInit {
 
   constructor(private deck: DeckService, private game: GameService, private map: MapService) { }
 
+
+
   ngOnInit() {
     this.cases = this.map.generateMap()
   }
 
   rotateTile() {
     this.tileRotation = this.game.rotationTile()
-    // console.log(`tile Rotation ${this.tileRotation}`);
-
-}}
+  }
+}
 
 
 

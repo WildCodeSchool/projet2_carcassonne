@@ -17,6 +17,9 @@ export class DeckService {
     //  console.log(removedTiles)
     //  console.log("tableau après pioche :")
     //  console.log(tilesDeck)
+    // console.log("keepNumTile")
+    // console.log(keepNumTile)
     return keepNumTile
   }
+  
 }

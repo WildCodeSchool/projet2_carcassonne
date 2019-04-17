@@ -1,13 +1,21 @@
 <div>
 
-  <button (click)="game.pickedTile()">
+  <button (click)="game.pickedTile();flipIt()">
     Piocher : {{game.totalTile}} tuiles restantes
   </button>
   <br>
   <br>
-  <img *ngIf="game.currentTile" id="image" [src]="game.currentTile.img"
-    [ngClass]="{'rotate90': tileRotation == 90 , 'rotate180': tileRotation == 180, 'rotate270': tileRotation == 270}">
-
+  <div class="flip-box">
+    <div class="flip-box-inner" [class.is-flipped]="flipped">
+      <div class="flip-box-front">
+        <img *ngIf="game.currentTile" id="image" [src]="game.currentTile.img"
+          [ngClass]="{'rotate90': tileRotation == 90 , 'rotate180': tileRotation == 180, 'rotate270': tileRotation == 270}">
+      </div>
+      <div class="flip-box-back">
+        <img src="../../assets/backcard.jpg">
+      </div>
+    </div>
+  </div>
   <br>
   <br>
 
