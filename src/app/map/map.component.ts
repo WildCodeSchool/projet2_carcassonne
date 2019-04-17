@@ -11,6 +11,7 @@ import { MapService } from '../map.service';
 export class MapComponent implements OnInit {
 
   cases = undefined
+  tileRotation: number;
 
   constructor(private deck: DeckService, private game: GameService, private map: MapService) { }
 
@@ -18,9 +19,11 @@ export class MapComponent implements OnInit {
     this.cases = this.map.generateMap()
   }
 
-  
+  rotateTile() {
+    this.tileRotation = this.game.rotationTile()
+    // console.log(`tile Rotation ${this.tileRotation}`);
 
-}
+}}
 
 
 

@@ -9,7 +9,6 @@ import { MapService } from './map.service';
 })
 export class GameService {
 
-  currentTileRotation = 0
   currentTile = undefined
   totalTile: number = tilesDeck.length
 
@@ -27,8 +26,8 @@ export class GameService {
 
     
   rotationTile() {
-    this.currentTileRotation = (this.currentTileRotation + 90) % 360;
-    return this.currentTileRotation
+    this.currentTile.rotation = (this.currentTile.rotation + 90) % 360;
+    return this.currentTile.rotation
   }
   //-----------------------------fin partie mehdi rotation 90° carte--------------------------
 
