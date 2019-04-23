@@ -7,12 +7,14 @@ import { GameService } from './game.service';
 import { DeckService } from './deck.service';
 import { PiocheComponent } from './pioche/pioche.component';
 import { MapService } from './map.service';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    PiocheComponent
+    PiocheComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
