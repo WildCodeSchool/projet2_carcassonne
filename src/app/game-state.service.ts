@@ -10,30 +10,22 @@ import { MapService } from './map.service';
 
 export class GameStateService {
 
-  // public STATE1: any
-  // public STATE2: any
-  // public STATE3: any
 
-  // public State = [this.STATE1, this.STATE2, this.STATE3]
+  
 
-  // constructor(private state: any,
-  //   private deck: DeckService,
-  //   private game: GameService,
-  //   private map: MapService) {
-  //   this.state = this.STATE1
-  // }
 
-  // public event1() {
-  //   switch (this.state) {
-  //     case this.STATE1:
-  //       this.game.pickedTile()
-  //       this.state = this.STATE2;
-  //       break;
-  //     default:
-  //       //Nothing
-  //       break;
-  //   }
-  // }
+
+  /*public event1() {
+    switch (this.state) {
+      case this.STATE1:
+        this.game.pickedTile()
+        this.state = this.STATE2;
+        break;
+      default:
+        //Nothing
+        break;
+    }
+  }*/
 
   // public event2() {
   //   switch (this.state) {
