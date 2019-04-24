@@ -11,8 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,8 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
   ],
   providers: [GameService, DeckService, MapService, NgbModal],
   bootstrap: [AppComponent]
