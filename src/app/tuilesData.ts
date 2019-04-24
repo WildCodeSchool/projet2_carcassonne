@@ -1,7 +1,11 @@
 
 export class Tuile {
 
+  static readonly SideKeys: string[] = ["top", "left", "bottom", "right"]
+  static readonly RotationKeys: number[] = [0, 90, 180, 270]
+
     constructor (
+      
     public name: string,
     public img: any,
     public top: string,
@@ -9,8 +13,25 @@ export class Tuile {
     public bottom: string,
     public left: string,
     public shield: boolean,
-    public rotation = 0
+    public rotation = 0,
+    public iPos:number = 0,
+    public jPos:number = 0
+    
     ) {}
+
+     getSideKeys(side:string, rotation:number, currentTile) {
+      console.log(`côté à tester : ${side}`)
+      let sidePos = Tuile.SideKeys.indexOf(side)
+      // console.log(`position du côté à tester : ${sidePos}`)
+      let rotationPos = Tuile.RotationKeys.indexOf(rotation)
+      // console.log(`valeur de la rotation : ${rotation}`)
+      // console.log(`position dans le tableau rotation : ${rotationPos}`)
+      let newKeys = Tuile.SideKeys[(sidePos + rotationPos) % Tuile.SideKeys.length]
+      // console.log(`newKeys : ${newKeys}`)
+      console.log(`valeur du nouveau côté : ${currentTile[newKeys]}`)
+      console.log(`-----------------------`)
+      return currentTile[newKeys]
+    }
   }
 
 
@@ -86,6 +107,7 @@ export class Tuile {
  let vprr_2 = new Tuile('vprr_2','../assets/Tiles/vprr-2.png','ville', 'prairie', 'route', 'route', false);
  let vprr_3 = new Tuile('vprr_3','../assets/Tiles/vprr-3.png','ville', 'prairie', 'route', 'route', false);
  let vppv_small = new Tuile('vppv_small','../assets/Tiles/vppv-small.png','ville', 'prairie', 'prairie', 'ville', false);
+
 
  export const tilesDeck = [ 
   pppp_1, 
