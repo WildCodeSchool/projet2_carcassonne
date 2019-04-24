@@ -24,6 +24,7 @@ export class MapComponent implements OnInit {
   rotateTile() {
     this.tileRotation = this.game.rotationTile()
   }
+  
 }
 
 

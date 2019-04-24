@@ -9,11 +9,17 @@ import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-boots
 })
 export class ModalComponent {
 
+  @Input()
+  turnState:string;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
     config.keyboard = false;
   }
+
+  //ng on change + <app-modal [turnState]="gameService.f"></app-modal> dans le app component
+
 
   open(content) {
     this.modalService.open(content);
