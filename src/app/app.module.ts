@@ -12,6 +12,33 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { GameStartComponent } from './game-start/game-start.component';
+import { RouterModule, Routes } from '@angular/router';
+
+
+const appRoutes: Routes = [
+
+  {
+    path: '',
+    component: HomeComponent
+  },
+ {
+    path: 'game-start',
+    component: GameStartComponent
+  }
+,
+ 
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
+  }
+ 
+ 
+ ];
+
+
 
 @NgModule({
   declarations: [
@@ -20,14 +47,24 @@ import { FormsModule } from '@angular/forms';
     PiocheComponent,
     MenuComponent,
     ModalComponent
+    HomeComponent,
+    GameStartComponent,
+    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    RouterModule.forRoot(appRoutes),
+
+
   ],
   providers: [GameService, DeckService, MapService, NgbModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+ 
