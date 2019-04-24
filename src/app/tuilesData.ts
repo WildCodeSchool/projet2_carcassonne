@@ -8,7 +8,8 @@ export class Tuile {
     public right: string,
     public bottom: string,
     public left: string,
-    public shield: boolean
+    public shield: boolean,
+    public rotation = 0
     ) {}
   }
 

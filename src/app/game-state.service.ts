@@ -1,0 +1,59 @@
+import { Injectable } from '@angular/core';
+import { GameService } from './game.service';
+import { DeckService } from './deck.service';
+import { MapService } from './map.service';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class GameStateService {
+
+
+  
+
+
+
+  /*public event1() {
+    switch (this.state) {
+      case this.STATE1:
+        this.game.pickedTile()
+        this.state = this.STATE2;
+        break;
+      default:
+        //Nothing
+        break;
+    }
+  }*/
+
+  // public event2() {
+  //   switch (this.state) {
+  //     case this.STATE2:
+  //       this.game.onTileClick(i,j)
+  //       this.state = this.STATE3;
+  //       break;
+  //     default:
+  //       //Nothing
+  //       break;
+  //   }
+  // }
+
+  //   public event3() {
+  //     switch(this.state) {
+  //     case STATE1:
+  //       //Action
+  //       this.state = State.STATE1;
+  //       break;
+  //     case STATE3:
+  //       //Action
+  //       this.state = State.STATE1;
+  //       break;
+  //     default:
+  //       //Nothing
+  //       break;
+  //     }
+  //   }
+  // }
+
+}

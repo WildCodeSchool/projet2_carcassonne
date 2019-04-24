@@ -1,0 +1,13 @@
+<p>ajouter un joueur</p>
+<form (ngSubmit)="onSubmit(form)">
+  <label for="user">Votre Nom</label><br>
+  <input type="text">
+  <p>Choisissez votre Famille</p>
+  <img class="imagefamily" (click)="pickThisFamily()" src="../../assets/family/arryn.png">
+  <img class="imagefamily" (click)="pickThisFamily()" src="../../assets/family/greyjoy.png">
+  <img class="imagefamily" (click)="pickThisFamily()" src="../../assets/family/lannister.png">
+  <img class="imagefamily" (click)="pickThisFamily()" src="../../assets/family/stark.png">
+  <img class="imagefamily" (click)="pickThisFamily()" src="../../assets/family/targa.png">
+  <br>
+  <button type="button" (click)="validatePlayer()">valider le joueur</button>
+</form>
