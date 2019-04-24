@@ -27,9 +27,4 @@ export class MenuComponent implements OnInit {
   public readonly STATE_CLICK_THIEF = 'Poser voleur'
   public currentState = this.STATE_PICK_TILE
 
-  nextTurnState(){
-    this.currentState = this.game.nextState()
-  }
-
-
 }
