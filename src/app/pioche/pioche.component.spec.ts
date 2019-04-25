@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { PiocheComponent } from './pioche.component';
+import { tilesDeck } from '../tuilesData';
+import { PiocheComponent } from '../pioche/pioche.component'
 
 describe('PiocheComponent', () => {
   let component: PiocheComponent;
@@ -22,4 +22,8 @@ describe('PiocheComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('should return the top with rotation equal to 180', () => {
+  //   expect(tilesDeck[0].getSideKeys("top",180)).toBe("prairie");
+  // });
 });
