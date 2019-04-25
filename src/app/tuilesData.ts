@@ -20,7 +20,7 @@ export class Tuile {
     ) {}
 
      getSideKeys(side:string, rotation:number, currentTile) {
-      console.log(`côté à tester : ${side}`)
+      // console.log(`côté à tester : ${side}`)
       let sidePos = Tuile.SideKeys.indexOf(side)
       // console.log(`position du côté à tester : ${sidePos}`)
       let rotationPos = Tuile.RotationKeys.indexOf(rotation)
@@ -28,8 +28,8 @@ export class Tuile {
       // console.log(`position dans le tableau rotation : ${rotationPos}`)
       let newKeys = Tuile.SideKeys[(sidePos + rotationPos) % Tuile.SideKeys.length]
       // console.log(`newKeys : ${newKeys}`)
-      console.log(`valeur du nouveau côté : ${currentTile[newKeys]}`)
-      console.log(`-----------------------`)
+      // console.log(`valeur du nouveau côté : ${currentTile[newKeys]}`)
+      // console.log(`-----------------------`)
       return currentTile[newKeys]
     }
   }
@@ -91,9 +91,9 @@ export class Tuile {
  let vrrv_1 = new Tuile('vrrv_1','../assets/Tiles/vrrv-1.png','ville', 'route', 'route', 'ville', false);
  let vrrv_2 = new Tuile('vrrv_2','../assets/Tiles/vrrv-2.png','ville', 'route', 'route', 'ville', false);
  let vrrv_3 = new Tuile('vrrv_3','../assets/Tiles/vrrv-3.png','ville', 'route', 'route', 'ville', false);
- let vrrr_1 = new Tuile('vrrv_1','../assets/Tiles/vrrv-1.png','ville', 'route', 'route', 'route', false);
- let vrrr_2 = new Tuile('vrrv_2','../assets/Tiles/vrrv-2.png','ville', 'route', 'route', 'route', false);
- let vrrr_3 = new Tuile('vrrv_3','../assets/Tiles/vrrv-3.png','ville', 'route', 'route', 'route', false);
+ let vrrr_1 = new Tuile('vrrr_1','../assets/Tiles/vrrr-1.png','ville', 'route', 'route', 'route', false);
+ let vrrr_2 = new Tuile('vrrr_2','../assets/Tiles/vrrr-2.png','ville', 'route', 'route', 'route', false);
+ let vrrr_3 = new Tuile('vrrr_3','../assets/Tiles/vrrr-3.png','ville', 'route', 'route', 'route', false);
  let vrrp_1 = new Tuile('vrrp_1','../assets/Tiles/vrrp-1.png','ville', 'route', 'route', 'prairie', false);
  let vrrp_2 = new Tuile('vrrp_2','../assets/Tiles/vrrp-2.png','ville', 'route', 'route', 'prairie', false);
  let vrrp_3 = new Tuile('vrrp_3','../assets/Tiles/vrrp-3.png','ville', 'route', 'route', 'prairie', false);
