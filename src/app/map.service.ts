@@ -23,7 +23,5 @@ export class MapService {
     this.cases[72][72] = tilesDeck[31]
     return this.cases
   }
-
   
-
 }

@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 })
 export class GameService {
 
+  removeStartTile = tilesDeck.splice(31, 1)
   currentTile = undefined
   totalTile: number = tilesDeck.length
   currentRotation = 0
@@ -19,26 +20,34 @@ export class GameService {
   constructor(private deck: DeckService, private map: MapService) { }
 
   pickedTile() {
-    // code pour ne pas qu'une carte soit tiré au retournement
-    // if (this.currentTile != undefined || this.totalTile === 0) { return }
-    this.currentRotation = 0
-    this.currentTile = this.deck.pickTile()
-    // console.log(`rotation : ${this.currentTile.rotation}`)
-    // console.log(`top : ${this.currentTile.top}`)
-    // console.log(`right : ${this.currentTile.right}`)
-    // console.log(`bottom : ${this.currentTile.bottom}`)
-    // console.log(`left : ${this.currentTile.left}`)
-    // console.log(`---------------------------------`)
-    // console.log("taille du tableau après pioche :")
-    // console.log(tilesDeck.length)
-
-    if (this.currentTile == undefined) {
-      return;
+    if (this.totalTile <= 0) {
+      this.currentTile = undefined
+      alert('End of the game')
+      console.log("Changement d'état vers le comptage des points")
+      return
     }
 
-    this.totalTile -= 1
-    this.currentState = this.STATE_CLICK_TILE
-    console.log('Changement d etat vers la pose d une tuile')
+    if (this.currentTile === undefined) {
+      this.currentRotation = 0
+      this.currentTile = this.deck.pickTile()
+      // console.log(`rotation : ${this.currentTile.rotation}`)
+      // console.log(`top : ${this.currentTile.top}`)
+      // console.log(`right : ${this.currentTile.right}`)
+      // console.log(`bottom : ${this.currentTile.bottom}`)
+      // console.log(`left : ${this.currentTile.left}`)
+      // console.log(`---------------------------------`)
+      // console.log("taille du tableau après pioche :")
+      // console.log(tilesDeck.length)
+      this.totalTile -= 1
+      this.currentState = this.STATE_CLICK_TILE
+      console.log("Changement d'état vers la pose de la tuile piochée")
+      return
+    }
+
+    if (this.currentTile !== undefined) {
+      this.currentTile = undefined
+      return
+    }
   }
 
 
@@ -122,12 +131,13 @@ export class GameService {
 
   onTileClick(i, j) {
     // ligne pour ne poser qu'une seule fois
-    // if (this.map.cases[i][j] != null) {return;}
+    if (this.map.cases[i][j] != null) { return; }
+    else {
+      this.checkSide(i, j) ? this.map.cases[i][j] = this.currentTile : undefined
 
-    this.checkSide(i, j) ? this.map.cases[i][j] = this.currentTile : undefined
-
-    this.currentState = this.STATE_ASK_THIEF
-    console.log('Changement d etat vers la demande poser voleur')
+      this.currentState = this.STATE_ASK_THIEF
+      console.log("Changement d'état vers la demande de poser un voleur")
+    }
   }
 
   // poser un voleur
@@ -149,7 +159,7 @@ export class GameService {
       this.players = 1
     }
     this.currentState = this.STATE_PICK_TILE
-    console.log('Changement d etat vers la pioche d une tuile')
+    console.log("Changement d'état vers la pioche d'une tuile")
     return this.players
   }
 
@@ -160,5 +170,3 @@ export class GameService {
   public currentState = this.STATE_PICK_TILE
 
 }
-
-

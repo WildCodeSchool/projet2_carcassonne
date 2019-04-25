@@ -9,6 +9,7 @@ import { DeckService } from '../deck.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+
   name: string;
   familyImages: string[] = [
     "../../assets/family/arryn.png",
@@ -17,18 +18,18 @@ export class MenuComponent implements OnInit {
     "../../assets/family/stark.png",
     "../../assets/family/targa.png"
   ]
+
   player: any = {};
   playersArray = []
-
   players: number = 1;
 
-
   constructor(private game: GameService, private deck: DeckService) { }
-  pickArryn() {return this.familyImages[0]}
-  pickGreyjoy() {return this.familyImages[1]}
-  pickLannister() {return this.familyImages[2]}
-  pickStark() {return this.familyImages[3]}
-  pickTarga() {return this.familyImages[4]}
+
+  pickArryn() { return this.familyImages[0] }
+  pickGreyjoy() { return this.familyImages[1] }
+  pickLannister() { return this.familyImages[2] }
+  pickStark() { return this.familyImages[3] }
+  pickTarga() { return this.familyImages[4] }
 
   validatePlayer() {
     if (this.pickGreyjoy()) {
@@ -41,7 +42,6 @@ export class MenuComponent implements OnInit {
       this.playersArray.push(this.player)
       console.log(this.playersArray)
     }
-
   }
 
   ngOnInit() {
