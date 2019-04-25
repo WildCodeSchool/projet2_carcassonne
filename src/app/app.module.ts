@@ -46,7 +46,7 @@ const appRoutes: Routes = [
     MapComponent,
     PiocheComponent,
     MenuComponent,
-    ModalComponent
+    ModalComponent,
     HomeComponent,
     GameStartComponent,
     
