@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { DeckService } from './deck.service';
 import { tilesDeck, Tuile } from './tuilesData';
 import { MapService } from './map.service';
+import { MenuComponent } from './menu/menu.component';
 
 
 @Injectable({
@@ -14,15 +15,18 @@ export class GameService {
   currentRotation = 0
   currentTileIndex = []
 
+
   constructor(private deck: DeckService, private map: MapService) { }
 
 
   pickedTile() {
+    if (this.currentTile != undefined || this.totalTile === 0) { return }
+
     this.currentTile = this.deck.pickTile()
-    if (this.totalTile === 0) { return }
-    else {
-      this.totalTile -= 1
-    }
+  //  if (this.totalTile === 0) { return }
+  //  else {
+   //   this.totalTile -= 1
+  //  }
     // console.log(`rotation : ${this.currentTile.rotation}`)
     // console.log(`top : ${this.currentTile.top}`)
     // console.log(`right : ${this.currentTile.right}`)
@@ -31,6 +35,12 @@ export class GameService {
     // console.log(`---------------------------------`)
     // console.log("taille du tableau après pioche :")
     // console.log(tilesDeck.length)
+    if (this.currentTile == undefined){
+      return;
+    }
+    this.totalTile -= 1
+    this.currentState = this.STATE_CLICK_TILE
+    console.log('Changement d etat vers la pose d une tuile')
   }
 
 
@@ -46,6 +56,7 @@ export class GameService {
     let jPos = j
     this.currentTile.iPos = iPos
     this.currentTile.jPos = jPos
+    if (this.map.cases[i][j] != null) {return;}
     this.map.cases[i][j] = this.currentTile
 
     let sideTopDynamic = Tuile.prototype.getSideKeys('top', this.currentRotation, this.currentTile)
@@ -73,50 +84,48 @@ export class GameService {
     if (this.map.cases[iPos][jPos-1].left === sideRightDynamic) {
       console.log("true")
     } 
+    this.currentState = this.STATE_ASK_THIEF
+    console.log('Changement d etat vers la demande poser voleur')
   }
 
 
-  // onTileClick(i, j) {
-  //   this.map.cases[i][j] = this.currentTile  
-  //   let iPos = i
-  //   let jPos = j
-  //   console.log(iPos)
-  //   console.log(jPos)
-  //   // console.log(`top start : ${this.map.cases[72][72].top}`)
-  //   // console.log(`right start : ${this.map.cases[72][72].right}`)
-  //   // console.log(`bottom start : ${this.map.cases[72][72].bottom}`)
-  //   // console.log(`left start : ${this.map.cases[72][72].left}`)
-  //   let sideTopDynamic = Tuile.prototype.getSideKeys('top', this.currentRotation, this.currentTile)
-  //   let sideRightDynamic = Tuile.prototype.getSideKeys('right', this.currentRotation, this.currentTile)
-  //   let sideBottomDynamic = Tuile.prototype.getSideKeys('bottom', this.currentRotation, this.currentTile)
-  //   let sideLeftDynamic = Tuile.prototype.getSideKeys('left', this.currentRotation, this.currentTile)
+    
 
-  //   if(this.map.cases[72][72].top === sideBottomDynamic) {
-  //       console.log(`top de la startTile : ${this.map.cases[72][72].top} VS bottom de la currentTile : ${sideBottomDynamic}`);
-  //       console.log(true);
-  //       return
-  //      }
-  //       else if (this.map.cases[72][72].right === sideLeftDynamic) {
-  //        console.log(`top de la startTile : ${this.map.cases[72][72].right} VS bottom de la currentTile : ${sideLeftDynamic}`);
-  //        console.log(true)
-  //         return
-  //       }
-  //       else if (this.map.cases[72][72].bottom === sideTopDynamic) {
-  //        console.log(`top de la startTile : ${this.map.cases[72][72].bottom} VS bottom de la currentTile : ${sideTopDynamic}`);
-  //        console.log(true)
-  //         return
-  //       }
-  //       else if (this.map.cases[72][72].left === sideRightDynamic) {
-  //        console.log(`top de la startTile : ${this.map.cases[72][72].left} VS bottom de la currentTile : ${sideRightDynamic}`);
-  //        console.log(true)
-  //        return
-  //       }
-  //       else {
-  //        console.log(false)
-  //        return
-  //       }
+  // poser un voleur
+//   poseThief(){
+//     switch(playerArray){
+// case (this.currentTile.bottom):
+
   //   }
+  // }
+
+  //game State machine
+
+  players: number = 1;
+  nbPlayer: number = 5;
+
+  nextPlayer() {
+    this.players += 1
+    if (this.players >= this.nbPlayer) {
+      this.players = 1
+    }
+    this.currentState = this.STATE_PICK_TILE
+    console.log('Changement d etat vers la pioche d une tuile')
+    return this.players
+  }
+
+  public readonly STATE_PICK_TILE = 'Piocher une carte'
+  public readonly STATE_CLICK_TILE = 'Poser une carte'
+  public readonly STATE_ASK_THIEF = 'Demander poser voleur'
+  public readonly STATE_CLICK_THIEF = 'Poser voleur'
+  public currentState = this.STATE_PICK_TILE
+
+
+
+
 
 
 }
+}
+
 
