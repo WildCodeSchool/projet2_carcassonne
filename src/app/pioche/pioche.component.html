@@ -9,7 +9,7 @@
     <div class="flip-box-inner" [class.is-flipped]="flipped">
       <div class="flip-box-front">
         <img *ngIf="game.currentTile" id="image" [src]="game.currentTile.img"
-          [ngClass]="{'rotate90': tileRotation == 90 , 'rotate180': tileRotation == 180, 'rotate270': tileRotation == 270}">
+          [ngClass]="{'rotate90': game.currentRotation == 90 , 'rotate180': game.currentRotation == 180, 'rotate270': game.currentRotation == 270}">
       </div>
       <div class="flip-box-back">
         <img src="../../assets/backcard.jpg">

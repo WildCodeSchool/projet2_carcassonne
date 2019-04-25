@@ -19,8 +19,9 @@ export class GameService {
   constructor(private deck: DeckService, private map: MapService) { }
 
   pickedTile() {
+    // code pour ne pas qu'une carte soit tiré au retournement
     // if (this.currentTile != undefined || this.totalTile === 0) { return }
-
+    this.currentRotation = 0
     this.currentTile = this.deck.pickTile()
     // console.log(`rotation : ${this.currentTile.rotation}`)
     // console.log(`top : ${this.currentTile.top}`)
@@ -47,13 +48,11 @@ export class GameService {
     return this.currentRotation
   }
 
-  onTileClick(i, j) {
+  checkSide(i, j) {
     let iPos = i
     let jPos = j
     this.currentTile.iPos = iPos
     this.currentTile.jPos = jPos
-    // if (this.map.cases[i][j] != null) {return;}
-    this.map.cases[i][j] = this.currentTile
 
     let sideTopDynamic = Tuile.prototype.getSideKeys('top', this.currentRotation, this.currentTile)
     let sideRightDynamic = Tuile.prototype.getSideKeys('right', this.currentRotation, this.currentTile)
@@ -64,52 +63,69 @@ export class GameService {
     this.currentTile.right = sideRightDynamic
     this.currentTile.bottom = sideBottomDynamic
     this.currentTile.left = sideLeftDynamic
-    console.log(`top : ${sideTopDynamic}`)
-    console.log(`right : ${sideRightDynamic}`)
-    console.log(`bottom : ${sideBottomDynamic}`)
-    console.log(`left : ${sideLeftDynamic}`)
+    console.log(`new top : ${sideTopDynamic}`)
+    console.log(`new right : ${sideRightDynamic}`)
+    console.log(`new bottom : ${sideBottomDynamic}`)
+    console.log(`new left : ${sideLeftDynamic}`)
     console.log(this.currentTile)
 
     let tileDectection = this.map.cases[iPos - 1][jPos] || this.map.cases[iPos][jPos + 1] || this.map.cases[iPos + 1][jPos] || this.map.cases[iPos][jPos - 1]
     if (!tileDectection) {
-      console.log("aucune tuile autour")
+      console.error("Aucune tuile autour")
+      alert("Impossible de placer la tuile ici")
+      return false
     }
 
-    if (this.map.cases[iPos - 1][jPos] === undefined) {
-      return
-    } else if (this.map.cases[iPos - 1][jPos].bottom === sideTopDynamic) {
-      console.log(`tuile posée - bord haut = ${sideTopDynamic}`)
-      console.log(`tuile au dessus - bord bas = ${this.map.cases[iPos - 1][jPos].bottom}`)
-      console.log("les bords comparés sont égaux")
+    if (this.map.cases[iPos - 1][jPos] !== undefined) {
+      if (this.map.cases[iPos - 1][jPos].bottom === sideTopDynamic) {
+        console.log(`Bords validés : tuile posée, son bord haut "${sideTopDynamic}" et tuile au dessus, son bord bas "${this.map.cases[iPos - 1][jPos].bottom}"`)
+      } else {
+        console.error(`Erreur bords : tuile posée, son bord haut "${sideTopDynamic}" et tuile au dessus, son bord bas "${this.map.cases[iPos - 1][jPos].bottom}"`)
+        alert(`Error : sides not matching (${sideTopDynamic} and ${this.map.cases[iPos - 1][jPos].bottom})`)
+        return false
+      }
     }
 
-    if (this.map.cases[iPos + 1][jPos] === undefined) {
-      return
-    } else if (this.map.cases[iPos + 1][jPos].top === sideBottomDynamic) {
-      console.log(`tuile posé - bord bas = ${sideBottomDynamic}`)
-      console.log(`tuile en dessous - bord haut = ${this.map.cases[iPos + 1][jPos].top}`)
-      console.log("les bords comparés sont égaux")
+    if (this.map.cases[iPos + 1][jPos] !== undefined) {
+      if (this.map.cases[iPos + 1][jPos].top === sideBottomDynamic) {
+        console.log(`Bords validés : tuile posée, son bord bas "${sideBottomDynamic}" et tuile en dessous, son bord haut "${this.map.cases[iPos + 1][jPos].top}"`)
+      } else {
+        console.error(`Erreur bords : tuile posée, son bord bas "${sideBottomDynamic}" et tuile en dessous, son bord haut "${this.map.cases[iPos + 1][jPos].top}"`)
+        alert(`Error : sides not matching (${sideBottomDynamic} and ${this.map.cases[iPos + 1][jPos].top})`)
+        return false
+      }
     }
 
-    if (this.map.cases[iPos][jPos + 1] === undefined) {
-      return
-    } else if (this.map.cases[iPos][jPos + 1].left === sideRightDynamic) {
-      console.log(`tuile posé - bord droit = ${sideRightDynamic}`)
-      console.log(`tuile à droite - bord gauche = ${this.map.cases[iPos][jPos + 1].left}`)
-      console.log("les bords comparés sont égaux")
+    if (this.map.cases[iPos][jPos + 1] !== undefined) {
+      if (this.map.cases[iPos][jPos + 1].left === sideRightDynamic) {
+        console.log(`Bords validés : tuile posée, son bord droit "${sideRightDynamic}" et tuile à droite, son bord gauche "${this.map.cases[iPos][jPos + 1].left}"`)
+      } else {
+        console.error(`Erreur bords : tuile posée, son bord droit "${sideRightDynamic}" et tuile à droite, son bord gauche "${this.map.cases[iPos][jPos + 1].left}"`)
+        alert(`Error : sides not matching (${sideRightDynamic} and ${this.map.cases[iPos][jPos + 1].left})`)
+        return false
+      }
     }
 
-    if (this.map.cases[iPos][jPos - 1] === undefined) {
-      return
-    } else if (this.map.cases[iPos][jPos - 1].right === sideLeftDynamic) {
-      console.log(`tuile posé - bord gauche = ${sideLeftDynamic}`)
-      console.log(`tuile à gauche - bord droit = ${this.map.cases[iPos][jPos - 1].right}`)
-      console.log("les bords comparés sont égaux")
-    } 
-    
-    else {
-      console.log("aucun bord ne correspond")
+    if (this.map.cases[iPos][jPos - 1] !== undefined) {
+      if (this.map.cases[iPos][jPos - 1].right === sideLeftDynamic) {
+        console.log(`Bords validés : tuile posée, son bord gauche "${sideLeftDynamic}" et tuile à gauche, son bord droit "${this.map.cases[iPos][jPos - 1].right}"`)
+      } else {
+        console.error(`Erreur bords : tuile posée, son bord gauche "${sideLeftDynamic}" et tuile à gauche, son bord droit "${this.map.cases[iPos][jPos - 1].right}"`)
+        alert(`Error : sides not matching (${sideLeftDynamic} and ${this.map.cases[iPos][jPos - 1].right})`)
+        return false
+      }
     }
+    console.log("Tuile posable")
+    return true
+  }
+
+
+  onTileClick(i, j) {
+    // ligne pour ne poser qu'une seule fois
+    // if (this.map.cases[i][j] != null) {return;}
+
+    this.checkSide(i, j) ? this.map.cases[i][j] = this.currentTile : undefined
+
     this.currentState = this.STATE_ASK_THIEF
     console.log('Changement d etat vers la demande poser voleur')
   }

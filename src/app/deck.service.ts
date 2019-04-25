@@ -6,8 +6,6 @@ import { tilesDeck } from './tuilesData';
 })
 export class DeckService {
 
-  // removedTiles: Tuile[]
-
   constructor() { }
 
   pickTile() {

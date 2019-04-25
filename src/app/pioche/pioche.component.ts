@@ -11,7 +11,6 @@ import { tilesDeck, Tuile } from '../tuilesData';
 })
 export class PiocheComponent implements OnInit {
 
-  tileRotation = 0
   flipped = true
 
   constructor(private game: GameService,
@@ -24,7 +23,7 @@ export class PiocheComponent implements OnInit {
   }
 
   rotateTile() {
-    this.tileRotation = this.game.rotationTile()
+    this.game.rotationTile()
   }
 
   
