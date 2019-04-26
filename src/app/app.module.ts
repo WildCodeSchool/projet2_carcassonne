@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { GameStartComponent } from './game-start/game-start.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 const appRoutes: Routes = [
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
     NgbModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
+    ButtonsModule.forRoot(),
 
 
   ],
