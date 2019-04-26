@@ -17,7 +17,6 @@ export class PiocheComponent implements OnInit {
     private deck: DeckService,
     private gameState: GameStateService) { }
 
-
   ngOnInit() {
 
   }
