@@ -5,7 +5,7 @@
 </div>
 <div *ngFor="let player of playersArray">
 <div class="stats col-2">
-    <img>
+    <img [src]="player.image">
     <p>{{player.name}}</p>
     <p>{{player.score}}</p>
     <p>{{player.token}}</p>

@@ -17,6 +17,13 @@ export class GameService {
   currentRotation = 0
   currentTileIndex = []
 
+  name: string;
+  family: string;
+  playerReal: any = {};
+  playersArray = [];
+  ngModel: string;
+  players: number = 1;
+
 
   constructor(private deck: DeckService, private map: MapService) { }
 
@@ -151,7 +158,6 @@ export class GameService {
 
   //game State machine
 
-  players: number = 1;
   nbPlayer: number = 5;
 
   nextPlayer() {
@@ -162,6 +168,39 @@ export class GameService {
     this.currentState = this.STATE_PICK_TILE
     console.log("Changement d'état vers la pioche d'une tuile")
     return this.players
+  }
+
+  playersGame() {
+    console.log()
+    switch (this.family) {
+      case ('arryn'):
+        this.playerReal = { name: this.name, image: "../assets/family/arryn.png", token :7, score:0}
+        this.playersArray.push(this.playerReal)
+        console.log(this.playersArray)
+        break
+      case ('greyjoy'):
+        this.playerReal = { name: this.name, image: "../assets/family/greyjoy.png",token :7, score:0 }
+        this.playersArray.push(this.playerReal)
+        console.log(this.playersArray)
+        break
+      case ('lannister'):
+        this.playerReal = { name: this.name, image: "../assets/family/lannister.png",token :7, score:0 }
+        this.playersArray.push(this.playerReal)
+        console.log(this.playersArray)
+        break
+      case ('stark'):
+        this.playerReal = { name: this.name, image: "../assets/family/stark.png",token :7, score:0 }
+        this.playersArray.push(this.playerReal)
+        console.log(this.playersArray)
+        break
+      case ('targa'):
+        this.playerReal = { name: this.name, image: "../assets/family/targa.png",token :7 , score:0}
+        this.playersArray.push(this.playerReal)
+        console.log(this.playersArray)
+        break
+      default:
+        console.log('erreur')
+    }
   }
 
   public readonly STATE_PICK_TILE = 'Piocher une carte'
