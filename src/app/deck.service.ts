@@ -6,7 +6,6 @@ import { tilesDeck } from './tuilesData';
 })
 export class DeckService {
 
-
   constructor() { }
 
   pickTile() {

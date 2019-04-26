@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Tuile, tilesDeck } from './tuilesData';
+import { isNull, nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
 
 
 @Injectable({
@@ -22,7 +23,5 @@ export class MapService {
     this.cases[72][72] = tilesDeck[31]
     return this.cases
   }
-
   
-
 }
