@@ -1,17 +1,14 @@
+<div></div>
 <p>ajouter un joueur</p>
-<form (ngSubmit)="onSubmit(form)">
+<form (ngSubmit)="onSubmit(form)" name="joueur">
   <label for="user">Votre Nom</label><br>
-  <input type="text">
+  <input name="user" type="text" [(ngModel)]="name" #user="ngModel">
   <p>Choisissez votre Famille</p>
-  <img class="imagefamily" (click)="pickThisFamily()" src="../../assets/family/arryn.png">
-  <img class="imagefamily" (click)="pickThisFamily()" src="../../assets/family/greyjoy.png">
-  <img class="imagefamily" (click)="pickThisFamily()" src="../../assets/family/lannister.png">
-  <img class="imagefamily" (click)="pickThisFamily()" src="../../assets/family/stark.png">
-  <img class="imagefamily" (click)="pickThisFamily()" src="../../assets/family/targa.png">
+  <img class="imagefamily" (click)="pickArryn()" [src]="familyImages[0]" alt="imagefamily">
+  <img class="imagefamily" (click)="pickGreyjoy()" [src]="familyImages[1]" alt="imagefamily">
+  <img class="imagefamily" (click)="pickLannister()" [src]="familyImages[2]" alt="imagefamily">
+  <img class="imagefamily" (click)="pickStark()" [src]="familyImages[3]" alt="imagefamily">
+  <img class="imagefamily" (click)="pickTarga()" [src]="familyImages[4]" alt="imagefamily">
   <br>
   <button type="button" (click)="validatePlayer()">valider le joueur</button>
-  <button type="button" (click)="nextTurnPlayer()">Joueur suivant</button>
-  <p>Joueur : {{ players }}</p>
-  <button type="button" (click)="nextTurnState()">Etat suivant</button>
-  <p>{{ currentState }}</p>
 </form>

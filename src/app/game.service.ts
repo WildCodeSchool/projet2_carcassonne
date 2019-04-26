@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { DeckService } from './deck.service';
 import { tilesDeck } from './tuilesData';
 import { MapService } from './map.service';
+import { MenuComponent } from './menu/menu.component';
 
 
 @Injectable({
@@ -9,29 +10,23 @@ import { MapService } from './map.service';
 })
 export class GameService {
 
-
   currentTile = undefined
   totalTile: number = tilesDeck.length
 
+
   constructor(private deck: DeckService, private map: MapService) { }
 
-  addPlayers() {
-    //ajouter un joueur pour qu ele tableau player ne soit pas undfined
-  }
 
   pickedTile() {
-    if (this.currentTile != undefined) { return }
-    else {
-      this.currentTile = this.deck.pickTile()
-      if (this.totalTile === 0) { return }
-      else {
-        this.totalTile -= 1
-        this.currentState = this.STATE_CLICK_TILE
-      } 
-    } 
+    if (this.currentTile != undefined || this.totalTile === 0) { return }
 
-    // console.log("taille du tableau après pioche :")
-    // console.log(tilesDeck.length)
+    this.currentTile = this.deck.pickTile()
+    if (this.currentTile == undefined){
+      return;
+    }
+    this.totalTile -= 1
+    this.currentState = this.STATE_CLICK_TILE
+    console.log('Changement d etat vers la pose d une tuile')
   }
 
 
@@ -43,14 +38,19 @@ export class GameService {
 
   onTileClick(i, j) {
 
-    if (this.map.cases[i][j] != null) {
-      
-     }
-    else {
-      this.map.cases[i][j] = this.currentTile
-      this.currentState = this.STATE_ASK_THIEF
-    }
+    if (this.map.cases[i][j] != null) {return;}
+    this.map.cases[i][j] = this.currentTile
+    this.currentState = this.STATE_ASK_THIEF
+    console.log('Changement d etat vers la demande poser voleur')
+
   }
+  // poser un voleur
+//   poseThief(){
+//     switch(playerArray){
+// case (this.currentTile.bottom):
+
+  //   }
+  // }
 
   //game State machine
 
@@ -63,6 +63,7 @@ export class GameService {
       this.players = 1
     }
     this.currentState = this.STATE_PICK_TILE
+    console.log('Changement d etat vers la pioche d une tuile')
     return this.players
   }
 
@@ -73,12 +74,11 @@ export class GameService {
   public currentState = this.STATE_PICK_TILE
 
 
-  nextState() {
-    this.currentState += 1
-    return this.currentState
-  }
+
 
 
 
 }
+
+
 
