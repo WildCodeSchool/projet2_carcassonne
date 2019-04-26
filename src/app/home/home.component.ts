@@ -22,27 +22,27 @@ export class HomeComponent implements OnInit {
     console.log()
     switch (this.family) {
       case ('arryn'):
-        this.player = { name: this.name, image: "../../assets/family/arryn.png", token :7}
+        this.player = { name: this.name, image: "../../assets/family/arryn.png", token :7, score:0}
         this.playersArray.push(this.player)
         console.log(this.playersArray)
         break
       case ('greyjoy'):
-        this.player = { name: this.name, image: "../../assets/family/greyjoy.png",token :7 }
+        this.player = { name: this.name, image: "../../assets/family/greyjoy.png",token :7, score:0 }
         this.playersArray.push(this.player)
         console.log(this.playersArray)
         break
       case ('lannister'):
-        this.player = { name: this.name, image: "../../assets/family/lannister.png",token :7 }
+        this.player = { name: this.name, image: "../../assets/family/lannister.png",token :7, score:0 }
         this.playersArray.push(this.player)
         console.log(this.playersArray)
         break
       case ('stark'):
-        this.player = { name: this.name, image: "../../assets/family/stark.png",token :7 }
+        this.player = { name: this.name, image: "../../assets/family/stark.png",token :7, score:0 }
         this.playersArray.push(this.player)
         console.log(this.playersArray)
         break
       case ('targa'):
-        this.player = { name: this.name, image: "../../assets/family/targa.png",token :7 }
+        this.player = { name: this.name, image: "../../assets/family/targa.png",token :7 , score:0}
         this.playersArray.push(this.player)
         console.log(this.playersArray)
         break
