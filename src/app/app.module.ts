@@ -12,6 +12,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { GameStartComponent } from './game-start/game-start.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     NgbModule,
     RouterModule.forRoot(appRoutes),
+    ButtonsModule.forRoot(),
 
   ],
   providers: [GameService, DeckService, MapService],
