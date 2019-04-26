@@ -23,6 +23,7 @@
     "@types/jquery": "^3.3.29",
     "bootstrap": "4.2.1",
     "core-js": "^2.5.4",
+    "ng2-panzoom": "^2.1.1",
     "ngx-bootstrap": "^4.0.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",

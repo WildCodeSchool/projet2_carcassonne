@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { GameStartComponent } from './game-start/game-start.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { Ng2PanZoomModule } from 'ng2-panzoom';
 
 
 const appRoutes: Routes = [
@@ -55,8 +56,6 @@ const appRoutes: Routes = [
     ModalComponent,
     HomeComponent,
     GameStartComponent,
-    
-
   ],
   imports: [
     BrowserModule,
@@ -65,8 +64,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     ButtonsModule.forRoot(),
-
-
+    Ng2PanZoomModule
   ],
   providers: [GameService, DeckService, MapService, NgbModal],
   bootstrap: [AppComponent]

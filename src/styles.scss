@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+body , html ,app-root, app-game-start , app-map{
+    height: 100%;
+    width: 100%;
+    display : block;
+}
