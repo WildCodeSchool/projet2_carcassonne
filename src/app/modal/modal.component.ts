@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges, SimpleChange, ViewChild, ElementRef } from '@angular/core';
 import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { GameService } from '../game.service';
 
@@ -20,16 +20,18 @@ export class ModalComponent implements OnChanges {
   }
 
   //faire une methode ngOnChange avec l'input turnState + <app-modal [turnState]="gameService.f"></app-modal> dans le app component
+  
+  @ViewChild('content') content: ElementRef;
 
   ngOnChanges(changes: SimpleChanges){
     if (this.turnState == this.game.STATE_ASK_THIEF){
+      setTimeout(()=> this.modalService.open(this.content), 1000);
+     
       console.log(changes)
     }
   }
 
-  open(content) {
-    this.modalService.open(content);
-  }
+
 
 }
 

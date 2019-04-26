@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-game-start',
@@ -11,7 +12,7 @@ export class GameStartComponent implements OnInit {
 
     public startID: any;
    
-    constructor(private route: ActivatedRoute) { }
+    constructor(private route: ActivatedRoute, private gs: GameService)  { }
    
     ngOnInit() {
       // USE THIS
