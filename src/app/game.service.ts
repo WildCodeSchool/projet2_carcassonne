@@ -11,11 +11,12 @@ import { HomeComponent } from './home/home.component';
 })
 export class GameService {
 
-  removeStartTile = tilesDeck.splice(31, 1)
+  // removeStartTile = tilesDeck.splice(31, 1)
   currentTile = undefined
   totalTile: number = tilesDeck.length
   currentRotation = 0
   currentTileIndex = []
+  checkSideState: boolean = undefined
 
 
   constructor(private deck: DeckService, private map: MapService) { }
@@ -31,12 +32,12 @@ export class GameService {
     if (this.currentTile === undefined) {
       this.currentRotation = 0
       this.currentTile = this.deck.pickTile()
-      // console.log(`rotation : ${this.currentTile.rotation}`)
-      // console.log(`top : ${this.currentTile.top}`)
-      // console.log(`right : ${this.currentTile.right}`)
-      // console.log(`bottom : ${this.currentTile.bottom}`)
-      // console.log(`left : ${this.currentTile.left}`)
-      // console.log(`---------------------------------`)
+      console.log(`rotation : ${this.currentTile.rotation}`)
+      console.log(`top : ${this.currentTile.top}`)
+      console.log(`right : ${this.currentTile.right}`)
+      console.log(`bottom : ${this.currentTile.bottom}`)
+      console.log(`left : ${this.currentTile.left}`)
+      console.log(`---------------------------------`)
       // console.log("taille du tableau après pioche :")
       // console.log(tilesDeck.length)
       this.totalTile -= 1
@@ -83,7 +84,7 @@ export class GameService {
     if (!tileDectection) {
       console.error("Aucune tuile autour")
       alert("Impossible de placer la tuile ici")
-      return false
+      return this.checkSideState = false
     }
 
     if (this.map.cases[iPos - 1][jPos] !== undefined) {
@@ -92,7 +93,7 @@ export class GameService {
       } else {
         console.error(`Erreur bords : tuile posée, son bord haut "${sideTopDynamic}" et tuile au dessus, son bord bas "${this.map.cases[iPos - 1][jPos].bottom}"`)
         alert(`Error : sides not matching (${sideTopDynamic} and ${this.map.cases[iPos - 1][jPos].bottom})`)
-        return false
+        return this.checkSideState = false
       }
     }
 
@@ -102,7 +103,7 @@ export class GameService {
       } else {
         console.error(`Erreur bords : tuile posée, son bord bas "${sideBottomDynamic}" et tuile en dessous, son bord haut "${this.map.cases[iPos + 1][jPos].top}"`)
         alert(`Error : sides not matching (${sideBottomDynamic} and ${this.map.cases[iPos + 1][jPos].top})`)
-        return false
+        return this.checkSideState = false
       }
     }
 
@@ -112,7 +113,7 @@ export class GameService {
       } else {
         console.error(`Erreur bords : tuile posée, son bord droit "${sideRightDynamic}" et tuile à droite, son bord gauche "${this.map.cases[iPos][jPos + 1].left}"`)
         alert(`Error : sides not matching (${sideRightDynamic} and ${this.map.cases[iPos][jPos + 1].left})`)
-        return false
+        return this.checkSideState = false
       }
     }
 
@@ -122,11 +123,11 @@ export class GameService {
       } else {
         console.error(`Erreur bords : tuile posée, son bord gauche "${sideLeftDynamic}" et tuile à gauche, son bord droit "${this.map.cases[iPos][jPos - 1].right}"`)
         alert(`Error : sides not matching (${sideLeftDynamic} and ${this.map.cases[iPos][jPos - 1].right})`)
-        return false
+        return this.checkSideState = false
       }
     }
     console.log("Tuile posable")
-    return true
+    return this.checkSideState = true
   }
 
 
@@ -134,10 +135,15 @@ export class GameService {
     // ligne pour ne poser qu'une seule fois
     if (this.map.cases[i][j] != null) { return; }
     else {
-      this.checkSide(i, j) ? this.map.cases[i][j] = this.currentTile : undefined
-
-      this.currentState = this.STATE_ASK_THIEF
-      console.log("Changement d'état vers la demande de poser un voleur")
+      this.checkSide(i, j)
+      if (this.checkSideState) {
+        this.map.cases[i][j] = this.currentTile
+        this.currentState = this.STATE_ASK_THIEF
+        console.log("Changement d'état vers la demande de poser un voleur")
+      } else {
+        undefined
+      }
+      
     }
   }
 

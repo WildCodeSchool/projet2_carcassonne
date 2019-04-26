@@ -24,9 +24,9 @@ export class ModalComponent implements OnChanges {
   @ViewChild('content') content: ElementRef;
 
   ngOnChanges(changes: SimpleChanges){
-    if (this.turnState == this.game.STATE_ASK_THIEF){
+    if (this.turnState === this.game.STATE_ASK_THIEF && this.game.checkSideState === true){
       setTimeout(()=> this.modalService.open(this.content), 1000);
-     
+      console.log(`état de la fonction checkSide : ${this.game.checkSideState}`)
       console.log(changes)
     }
   }

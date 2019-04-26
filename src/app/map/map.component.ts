@@ -27,6 +27,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.cases = this.map.generateMap()
+    
   }
 
   rotateTile() {

@@ -18,6 +18,7 @@ export class GameStartComponent implements OnInit {
       // USE THIS
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.startID = parseInt(params.get('startID'));
+        
       });
    
       // NEVER USE THIS /!\

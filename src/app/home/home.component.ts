@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+ 
   }
 
   public readonly STATE_PICK_TILE = 'Piocher une carte'
