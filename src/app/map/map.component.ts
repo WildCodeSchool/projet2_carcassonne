@@ -16,8 +16,8 @@ export class MapComponent implements OnInit {
   private panZoomConfig: PanZoomConfig = new PanZoomConfig({
     zoomLevels: 4,
     scalePerZoomLevel: 1.5,
-    initialPanX : -10300,
-    initialPanY : -10300,
+    initialPanX : -10000,
+    initialPanY : -10500,
     freeMouseWheelFactor: 0.01,
     zoomToFitZoomLevelFactor: 0.98,
     dragMouseButton: 'right',
