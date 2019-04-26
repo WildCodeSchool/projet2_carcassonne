@@ -1,33 +1,30 @@
-body{
+.background{
     
     background-image:url(../../assets/home/fond2.jpg);
-    height: 1280px;
+    // height: 1280px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     opacity: 0.78;
     
 } 
 
 
-img{
+.titre{
 
-    width: 50vw;
-    display: block;
-    margin-left: 50%;
-    margin-right: auto ;
+position: absolute;
+width: 40%;
 
 }
 
-button{
+.start{
 
-font-size: 5vh;
+font-size: 2vh;
 background-color: #374b9e;
 margin-left: 50%;
 width: 20vw;
 }
 
-button:hover
-{
+.start:hover {
 box-shadow: 0px 0px 10px #000000;
 z-index: 2;
 -webkit-transition: all 100ms ease-in;
@@ -47,4 +44,12 @@ background-color: #374b9e;
     padding-top: 20%;
    
 
+}
+.familyimage {
+    width: 50px;
+    padding: 5px;
+}
+
+.inlineblock {
+    display: inline-block;
 }

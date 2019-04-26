@@ -3,6 +3,7 @@ import { DeckService } from './deck.service';
 import { tilesDeck, Tuile } from './tuilesData';
 import { MapService } from './map.service';
 import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
 
 
 @Injectable({

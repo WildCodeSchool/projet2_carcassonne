@@ -1,13 +1,51 @@
-<body>
-<img src="/assets/home/logo.png"> 
+<div class="background container-fluid">
+  <img class="titre img-fluid mx-auto" src="/assets/home/logo.png" alt="Responsive image">
+  <div class="container">
+    <div class="row">
+      <div class="enterPlayer col-6">
 
-<br><br><br>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12">
-<button type="button" class="btn btn-primary btn-lg"routerLink="/game-start"> START GAME</button>
+        <p>ajouter un joueur</p>
+        <form (ngSubmit)="onSubmit()" name="joueur">
+          <label class="" for="user">Votre Nom</label><br>
+          <input name="user" type="text" [(ngModel)]="name" #user="ngModel">
+          <p>Choisissez votre Famille</p>
+          <div>
+            <input type="radio" [(ngModel)]="family" name="family" value="arryn">
+            <label for="arryn"><img class="familyimage" src="../../assets/family/arryn.png" alt="arryn"></label>
+
+            <input type="radio" [(ngModel)]="family" name="family" value="greyjoy">
+            <label for="greyjoy"><img class="familyimage" src="../../assets/family/greyjoy.png" alt="greyjoy"></label>
+
+            <input type="radio" [(ngModel)]="family" name="family" value="lannister">
+            <label for="lannister"><img class="familyimage" src="../../assets/family/lannister.png"
+                alt="lannister"></label>
+
+            <input type="radio" [(ngModel)]="family" name="family" value="stark">
+            <label for="stark"><img class="familyimage" src="../../assets/family/stark.png" alt="stark"></label>
+
+            <input type="radio" [(ngModel)]="family" name="family" value="targa">
+            <label for="targa"><img class="familyimage" src="../../assets/family/targa.png" alt="targa"></label>
+          </div>
+          <br>
+          <button type="submit">valider le joueur</button>
+        </form>
+      </div>
+
+      <div class="col-6 tableaujoueurs">
+        <p>Reste 6 places dans la partie</p>
+<div *ngFor="let player of playersArray">
+  <p>{{player.name}}</p><img class="familyimage" src="{{player.image}}" alt="">
 
 </div>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <button type="button" class="btn btn-primary btn-lg start" routerLink="/game-start"> START GAME</button>
+
+    </div>
+  </div>
 </div>
-</div>
-</body>
