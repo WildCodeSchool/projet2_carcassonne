@@ -17,13 +17,6 @@ export class GameService {
   currentRotation = 0
   currentTileIndex = []
 
-  name: string;
-  family: string;
-  playerReal: any = {};
-  playersArray = [];
-  ngModel: string;
-  players: number = 1;
-
 
   constructor(private deck: DeckService, private map: MapService) { }
 
@@ -159,6 +152,12 @@ export class GameService {
   //game State machine
 
   nbPlayer: number = 5;
+  name: string;
+  family: string 
+  playerReal: any = {};
+  playersArray = [];
+  ngModel: string;
+  players: number = 1;
 
   nextPlayer() {
     this.players += 1

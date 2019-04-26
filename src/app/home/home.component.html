@@ -7,23 +7,23 @@
         <p>ajouter un joueur</p>
         <form (ngSubmit)="onSubmit()" name="joueur">
           <label class="" for="user">Votre Nom</label><br>
-          <input name="user" type="text" [(ngModel)]="name" #user="ngModel">
+          <input name="user" type="text" [(ngModel)]="game.name" #user="ngModel">
           <p>Choisissez votre Famille</p>
           <div>
-            <input type="radio" [(ngModel)]="family" name="family" value="arryn">
+            <input type="radio" [(ngModel)]="game.family" name="family" value="arryn">
             <label for="arryn"><img class="familyimage" src="../../assets/family/arryn.png" alt="arryn"></label>
 
-            <input type="radio" [(ngModel)]="family" name="family" value="greyjoy">
+            <input type="radio" [(ngModel)]="game.family" name="family" value="greyjoy">
             <label for="greyjoy"><img class="familyimage" src="../../assets/family/greyjoy.png" alt="greyjoy"></label>
 
-            <input type="radio" [(ngModel)]="family" name="family" value="lannister">
+            <input type="radio" [(ngModel)]="game.family" name="family" value="lannister">
             <label for="lannister"><img class="familyimage" src="../../assets/family/lannister.png"
                 alt="lannister"></label>
 
-            <input type="radio" [(ngModel)]="family" name="family" value="stark">
+            <input type="radio" [(ngModel)]="game.family" name="family" value="stark">
             <label for="stark"><img class="familyimage" src="../../assets/family/stark.png" alt="stark"></label>
 
-            <input type="radio" [(ngModel)]="family" name="family" value="targa">
+            <input type="radio" [(ngModel)]="game.family" name="family" value="targa">
             <label for="targa"><img class="familyimage" src="../../assets/family/targa.png" alt="targa"></label>
           </div>
           <br>
@@ -33,7 +33,7 @@
 
       <div class="col-6 tableaujoueurs">
         <p>Reste 6 places dans la partie</p>
-<div *ngFor="let player of playersArray">
+<div *ngFor="let player of game.playersArray">
   <p>{{player.name}}</p><img class="familyimage" src="{{player.image}}" alt="">
 
 </div>

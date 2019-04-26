@@ -3,9 +3,9 @@
 <div class="col-2">
 <img id="logo" src="/assets/home/logo.png" height="180" width="400" routerLink="/retour-menu">
 </div>
-<div *ngFor="let player of playersArray">
+<div *ngFor="let player of game.playersArray">
 <div class="stats col-2">
-    <img [src]="player.image">
+    <img src="{{player.image}}">
     <p>{{player.name}}</p>
     <p>{{player.score}}</p>
     <p>{{player.token}}</p>
