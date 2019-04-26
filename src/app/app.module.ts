@@ -35,6 +35,11 @@ const appRoutes: Routes = [
     redirectTo: '',
     pathMatch: 'full'
   }
+,
+  {
+    path: 'retour-menu',
+    component: HomeComponent
+  }
  
  
  ];

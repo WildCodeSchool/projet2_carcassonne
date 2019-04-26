@@ -1,7 +1,4 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { GameService } from '../game.service';
-import { DeckService } from '../deck.service';
-
 
 @Component({
   selector: 'app-menu',
@@ -10,11 +7,9 @@ import { DeckService } from '../deck.service';
 })
 export class MenuComponent implements OnInit {
 
-
   constructor() { }
-
-
+  
   ngOnInit() {
   }
 
- }
+}
