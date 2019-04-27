@@ -13,6 +13,8 @@ export class MapComponent implements OnInit {
 
   cases = undefined
   tileRotation: number;
+  position:any;
+
   private panZoomConfig: PanZoomConfig = new PanZoomConfig({
     zoomLevels: 4,
     scalePerZoomLevel: 1.5,
@@ -32,6 +34,10 @@ export class MapComponent implements OnInit {
 
   rotateTile() {
     this.tileRotation = this.game.rotationTile()
+  }
+
+  onSubmit(){
+   this.game.currentTile.position = this.game.voleurPosition()
   }
   
 }

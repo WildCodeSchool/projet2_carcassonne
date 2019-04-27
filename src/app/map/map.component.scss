@@ -62,3 +62,33 @@
     width: 100%;
     background: cover;
 }
+
+.imgModal {
+  width: 50%;
+}
+
+.voleurHaut {
+  top: 2%;
+  right: 50%;
+  background-color: red;
+}
+
+.voleurdroite {
+  top: 50%;
+  right: 2%;
+}
+
+.voleurbas {
+  bottom: 2%;
+  right: 50%;
+}
+
+.voleurgauche {
+  left: 2%;
+  top: 50%;
+}
+
+.voleurcentre {
+  top: 50%;
+  right: 50%;
+}

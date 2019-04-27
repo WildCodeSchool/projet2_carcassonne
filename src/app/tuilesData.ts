@@ -15,7 +15,8 @@ export class Tuile {
     public shield: boolean,
     public rotation = 0,
     public iPos:number = 0,
-    public jPos:number = 0
+    public jPos:number = 0,
+    public position:string ='Aucun'
     
     ) {}
 

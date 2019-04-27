@@ -147,13 +147,7 @@ export class GameService {
     } return this.currentTile
   }
 
-  // poser un voleur
-  //   poseThief(){
-  //     switch(playerArray){
-  // case (this.currentTile.bottom):
 
-  //   }
-  // }
 
   //game State machine
 
@@ -213,24 +207,24 @@ export class GameService {
   voleurPosition() {
     switch (this.position) {
       case ('haut'):
-        this.position = "haut"
+        this.currentTile.position = "Haut"
         break
       case ('bas'):
-        this.position = "bas"
+        this.currentTile.position = "Bas"
         break
       case ('droite'):
-        this.position = "droite"
+        this.currentTile.position = "Droite"
         break
       case ('gauche'):
-        this.position = "gauche"
+        this.currentTile.position = "Gauche"
         break
       case ('centre'):
-        this.position = "centre"
+        this.currentTile.position = "Centre"
         break
       case ('aucun'):
-        this.position = "aucun"
+        this.currentTile.position = "Aucun"
         break
-    }
+    } return this.currentTile.position
   }
 
   public readonly STATE_PICK_TILE = 'Piocher une carte'
