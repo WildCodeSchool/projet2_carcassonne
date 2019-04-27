@@ -143,8 +143,8 @@ export class GameService {
       } else {
         undefined
       }
-      
-    }
+
+    } return this.currentTile
   }
 
   // poser un voleur
@@ -159,7 +159,7 @@ export class GameService {
 
   nbPlayer: number = 5;
   name: string;
-  family: string 
+  family: string
   playerReal: any = {};
   playersArray = [];
   ngModel: string;
@@ -179,32 +179,57 @@ export class GameService {
     console.log()
     switch (this.family) {
       case ('arryn'):
-        this.playerReal = { name: this.name, image: "../assets/family/arryn.png", token :7, score:0}
+        this.playerReal = { name: this.name, image: "../assets/family/arryn.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('greyjoy'):
-        this.playerReal = { name: this.name, image: "../assets/family/greyjoy.png",token :7, score:0 }
+        this.playerReal = { name: this.name, image: "../assets/family/greyjoy.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('lannister'):
-        this.playerReal = { name: this.name, image: "../assets/family/lannister.png",token :7, score:0 }
+        this.playerReal = { name: this.name, image: "../assets/family/lannister.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('stark'):
-        this.playerReal = { name: this.name, image: "../assets/family/stark.png",token :7, score:0 }
+        this.playerReal = { name: this.name, image: "../assets/family/stark.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('targa'):
-        this.playerReal = { name: this.name, image: "../assets/family/targa.png",token :7 , score:0}
+        this.playerReal = { name: this.name, image: "../assets/family/targa.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       default:
         console.log('erreur')
+    }
+  }
+
+  position: string
+
+  voleurPosition() {
+    switch (this.position) {
+      case ('haut'):
+        this.position = "haut"
+        break
+      case ('bas'):
+        this.position = "bas"
+        break
+      case ('droite'):
+        this.position = "droite"
+        break
+      case ('gauche'):
+        this.position = "gauche"
+        break
+      case ('centre'):
+        this.position = "centre"
+        break
+      case ('aucun'):
+        this.position = "aucun"
+        break
     }
   }
 
