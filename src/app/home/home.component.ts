@@ -8,6 +8,7 @@ import { DeckService } from '../deck.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+tableLength = 5-this.game.playersArray.length
 
   constructor(private game: GameService, private deck: DeckService) { }
 

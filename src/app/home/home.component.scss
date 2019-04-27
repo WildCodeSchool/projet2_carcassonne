@@ -1,55 +1,58 @@
-.background{
-    
-    background-image:url(../../assets/home/fond2.jpg);
-    // height: 1280px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.78;
-    
-} 
-
-
-.titre{
-
-position: absolute;
-width: 40%;
-
+.background {
+  background-image: url(../../assets/home/countryburn.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 110%;
+}
+.tableaujoueurs,
+.enterPlayer {
+  background-color: #ffffff65;
+}
+.inputnom {
+  margin: 20px;
+}
+.titre {
+  width: 50%;
+  -webkit-filter: drop-shadow(5px 5px 5px black);
+  filter: drop-shadow(5px 5px 5px black);
 }
 
-.start{
-
-font-size: 2vh;
-background-color: #374b9e;
-margin-left: 50%;
-width: 20vw;
+.start {
+  font-size: 2vh;
+  background-color: #374b9e;
+  margin-left: 50%;
+  width: 20vw;
+  box-shadow: 10px 5px 5px rgb(61, 66, 77);
+}
+.validate {
+  font-size: 2vh;
+  background-color: #374b9e;
+  box-shadow: 10px 5px 5px rgb(61, 66, 77);
 }
 
 .start:hover {
-box-shadow: 0px 0px 10px #000000;
-z-index: 2;
--webkit-transition: all 100ms ease-in;
--webkit-transform: scale(1.5);
--ms-transition: all 100ms ease-in;
--ms-transform: scale(1.5);
--moz-transition: all 100ms ease-in;
--moz-transform: scale(1.5);
-transition: all 100ms ease-in;
-transform: scale(1.5);
-background-color: #374b9e;
+  box-shadow: 10px 5px 5px rgb(61, 66, 77);
+  z-index: 2;
+  -webkit-transition: all 100ms ease-in;
+  -webkit-transform: scale(1.5);
+  -ms-transition: all 100ms ease-in;
+  -ms-transform: scale(1.5);
+  -moz-transition: all 100ms ease-in;
+  -moz-transform: scale(1.5);
+  transition: all 100ms ease-in;
+  transform: scale(1.5);
+  background-color: #374b9e;
 }
 
-.container{
-
-    padding-left: 50%;
-    padding-top: 20%;
-   
-
-}
 .familyimage {
-    width: 50px;
-    padding: 5px;
+  width: 70px;
+  padding: 8px;
 }
-
-.inlineblock {
-    display: inline-block;
+div {
+  font-family: "New Rocker", cursive;
+  color: #374b9e;
+  padding: 10px;
 }
+// font-family: 'New Rocker', cursive;
+// font-family: 'Trade Winds', cursive;

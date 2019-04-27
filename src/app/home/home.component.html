@@ -1,14 +1,26 @@
 <div class="background container-fluid">
-  <img class="titre img-fluid mx-auto" src="/assets/home/logo.png" alt="Responsive image">
+
+  <div class="row text-center">
+    <div class="col">
+      <img class="titre" src="/assets/home/logo.png">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10">
+      <button type="button" class="btn btn-dark start justify-content-center" routerLink="/game-start">Lancer
+        l'aventure</button>
+    </div>
+  </div>
   <div class="container">
     <div class="row">
-      <div class="enterPlayer col-6">
+      <div class="col-1"></div>
+      <div class="enterPlayer col-5">
 
-        <p>ajouter un joueur</p>
+        <h4 class="pickfamily text-center">Ajoutez un joueur</h4>
         <form (ngSubmit)="onSubmit()" name="joueur">
-          <label class="" for="user">Votre Nom</label><br>
-          <input name="user" type="text" [(ngModel)]="game.name" #user="ngModel">
-          <p>Choisissez votre Famille</p>
+          <h4><label class="" for="user" class="text-center">Entrez votre nom</label></h4>
+          <input class="inputnom" name="user" type="text" [(ngModel)]="game.name" #user="ngModel">
+          <h4 class="pickfamily">Choisissez votre Famille</h4>
           <div>
             <input type="radio" [(ngModel)]="game.family" name="family" value="arryn">
             <label for="arryn"><img class="familyimage" src="../../assets/family/arryn.png" alt="arryn"></label>
@@ -27,25 +39,22 @@
             <label for="targa"><img class="familyimage" src="../../assets/family/targa.png" alt="targa"></label>
           </div>
           <br>
-          <button type="submit">valider le joueur</button>
+          <button class="btn btn-dark validate" type="submit">valider le joueur</button>
         </form>
       </div>
 
-      <div class="col-6 tableaujoueurs">
-        <p>Reste 6 places dans la partie</p>
-<div *ngFor="let player of game.playersArray">
-  <p>{{player.name}}</p><img class="familyimage" src="{{player.image}}" alt="">
-
-</div>
-
-
+      <div class="col-5 tableaujoueurs">
+        <h4 class="placesleft text-center">Reste {{tableLength}} places dans la partie</h4>
+        <div *ngFor="let player of game.playersArray">
+          <td>
+            <img class="familyimage" src="{{player.image}}" alt="">
+          </td>
+          <td>
+            <h4>{{player.name}}</h4>
+          </td>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <button type="button" class="btn btn-primary btn-lg start" routerLink="/game-start"> START GAME</button>
-
+      <div class="col-1"></div>
     </div>
   </div>
 </div>

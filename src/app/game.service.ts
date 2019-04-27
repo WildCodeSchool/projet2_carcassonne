@@ -18,7 +18,6 @@ export class GameService {
   currentTileIndex = []
   checkSideState: boolean = undefined
 
-
   constructor(private deck: DeckService, private map: MapService) { }
 
   pickedTile() {
@@ -162,7 +161,6 @@ export class GameService {
   family: string
   playerReal: any = {};
   playersArray = [];
-  ngModel: string;
   players: number = 1;
 
   nextPlayer() {

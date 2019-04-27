@@ -1,21 +1,18 @@
-<div class="container-fluid">
+<div class="container-fluid bandeau">
     <div class="row">
         <img id="logo" src="/assets/home/logo.png" routerLink="/retour-menu">
         <div *ngFor="let player of game.playersArray">
-            <div class="container playerName">
-                <div class="row">
-                    <div class="col-6">
-                        <img class="imageTeam" src="{{player.image}}">
-                    </div>
-                    <div class="col-6">
-                        <h2>{{player.name}}</h2>
-                        <ul>
-                            <li>Score : {{player.score}}</li>
-                            <li>Voleurs : {{player.token}}</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="playerName">
+                <td>
+                    <tr><img class="imageTeam" src="{{player.image}}"></tr>
+                </td>
+                <td>
+                    <h2>{{player.name}}</h2>
+                    <tr> Score : {{player.score}}</tr>
+                    <tr>Voleurs : {{player.token}}</tr>
+                </td>
             </div>
         </div>
     </div>
+    <div class="bandebas"></div>
 </div>

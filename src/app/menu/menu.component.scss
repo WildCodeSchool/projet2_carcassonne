@@ -1,29 +1,47 @@
 .stats {
-    margin-top: 1%;
+  margin-top: 1%;
 }
 
 #logo {
-    width: 20%;
-    height: 15%;
+  width: 25%;
+  height: 15%;
+  -webkit-filter: drop-shadow(2px 2px 2px rgb(233, 230, 88));
 }
 
 .imageTeam {
-    width: 100%;
-    height: 100%;
+  width: 80px;
+  margin-left: 4vw;
 }
 
 .playerName {
-    padding-top: 5%;
-}
-
-ul {
-    list-style: none;
+  padding-top: 5%;
+  font-family: "Trade Winds", cursive;
 }
 
 h2 {
-    text-align: center;
+  text-align: center;
+  color:white;
+  text-shadow: 0px 0px 4px black;
+  font-family: "Trade Winds", cursive;
+  text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
 }
 
-li {
-    font-size: 2em;
+tr {
+  font-size: 1.2em;
+  color:white;
+  text-shadow: 0px 0px 4px black;
+  text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+}
+.bandeau {
+  z-index: 1;
+  overflow: hidden;
+  position: fixed;
+  background-image: url(../../assets/nav.resized.jpg);
+  background: cover;
+}
+.bandebas {
+  z-index: 20;
+  height: 40px;
+  background-image: url(../../assets/grass2.png);
+  background-repeat: repeat-x;
 }
