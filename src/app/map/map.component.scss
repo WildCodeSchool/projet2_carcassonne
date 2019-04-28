@@ -50,31 +50,51 @@
     background: cover;
 }
 
-.imgModal {
-  width: 50%;
+
+.imgModalVoleur {
+  position: relative;
 }
 
 .voleurHaut {
-  top: 2%;
-  right: 50%;
+position: relative;
+top: -94%;
+right: -37%;
+width: 45px;
+border: 1px dashed white;
 }
 
 .voleurDroite {
-  top: 50%;
-  right: 2%;
+position: relative;
+top: -60%;
+right: -66%;
+width: 45px;
+border: 1px dashed white;
 }
 
 .voleurBas {
-  bottom: 2%;
-  right: 50%;
+position: relative;
+bottom: 33%;
+right: -38%;
+width: 45px;
+border: 1px dashed white;
 }
 
 .voleurGauche {
-  left: 2%;
-  top: 50%;
+position: relative;
+top: -60%;
+left: 9%;
+width: 45px;
+border: 1px dashed white;
 }
 
 .voleurCentre {
-  top: 50%;
-  right: 50%;
+position: relative;
+top: -60%;
+right: -38%;
+width: 45px;
+border: 1px dashed white;
+}
+
+.voleurAucun {
+display: none;
 }

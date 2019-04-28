@@ -23,32 +23,50 @@
     -ms-transform: rotate(270deg) translateX(-100%);
   }
 
+  .imgModalVoleur {
+    position: relative;
+  }
+
   .imgModal {
     width: 50%;
 }
 
 .voleurHaut {
-  top: 2%;
-  right: 50%;
+  position: absolute;
+  top: 8%;
+  right: 43%;
+  width: 60px;
 }
 
 .voleurDroite {
-  top: 50%;
-  right: 2%;
+  position: absolute;
+  top: 42%;
+  right: 27%;
+  width: 60px;
 }
 
 .voleurBas {
-  bottom: 2%;
-  right: 50%;
+  position: absolute;
+  bottom: 6%;
+  right: 43%;
+  width: 60px;
 }
 
 .voleurGauche {
-  left: 2%;
-  top: 50%;
+  position: absolute;
+  top: 42%;
+  left: 28%;
+  width: 60px;
 }
 
 .voleurCentre {
-  top: 50%;
-  right: 50%;
+  position: absolute;
+  top: 42%;
+  right: 44%;
+  width: 60px;
+}
+
+.voleurAucun {
+  display: none;
 }
   
