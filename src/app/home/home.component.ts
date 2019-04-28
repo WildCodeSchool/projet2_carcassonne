@@ -12,7 +12,7 @@ tableLength = 5-this.game.playersArray.length
 
   constructor(private game: GameService, private deck: DeckService) { }
 
-  onSubmit() {
+  submitPlayer() {
     this.game.playersGame()
   }
 

@@ -17,7 +17,7 @@
       <div class="enterPlayer col-5">
 
         <h4 class="pickfamily text-center">Ajoutez un joueur</h4>
-        <form (ngSubmit)="onSubmit()" name="joueur">
+        <form (ngSubmit)="submitPlayer()" name="joueur">
           <h4><label class="" for="user" class="text-center">Entrez votre nom</label></h4>
           <input class="inputnom" name="user" type="text" [(ngModel)]="game.name" #user="ngModel">
           <h4 class="pickfamily">Choisissez votre Famille</h4>

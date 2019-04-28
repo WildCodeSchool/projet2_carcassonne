@@ -31,7 +31,7 @@ export class ModalComponent implements OnChanges {
     }
   }
 
-  onSubmit(){
+  submitVoleur(){
     this.game.voleurPosition()
   }
 

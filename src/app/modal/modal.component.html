@@ -5,45 +5,39 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-
-    <img class="imgModal" id='image' src="{{game.currentTile.img}}" [ngClass]="{'rotate90': game.currentRotation == 90, 'rotate180': game.currentRotation == 180, 'rotate270': game.currentRotation == 270, 
-        'haut': game.position === 'haut'}">
+  <form (ngSubmit)="submitVoleur()" name="voleur">
+  <div class="modal-body text-center">
     <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
       <div class='container'>
-          <form (ngSubmit)="onSubmit()" name="voleur">
-        <div class='row'>
-          
-            <label *ngIf="game.currentTile.top != 'prairie'" ngbButtonLabel class="btn-primary">
-              <input ngbButton [(ngModel)]="game.position" type="radio" value="Haut"> Haut
-            </label>
-            <label *ngIf="game.currentTile.right != 'prairie'" ngbButtonLabel class="btn-primary">
-              <input ngbButton [(ngModel)]="game.position" type="radio" value="Droite"> Droite
-            </label>
-            <label *ngIf="game.currentTile.bottom != 'prairie'" ngbButtonLabel class="btn-primary">
-              <input ngbButton [(ngModel)]="game.position" type="radio" value="Bas"> Bas
-            </label>
-        </div>
-        <div class='row'>
-          <label *ngIf="game.currentTile.left != 'prairie'" ngbButtonLabel class="btn-primary">
-            <button ngbButton [(ngModel)]="game.position" type="radio" value="Gauche"> Gauche
+          <label *ngIf="game.currentTile.top != 'prairie'" ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Haut"> en haut
+          </label>
+          <label *ngIf="game.currentTile.right != 'prairie'" ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Droite"> à droite
+          </label>
+          <label *ngIf="game.currentTile.bottom != 'prairie'" ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Bas"> en bas
+          </label>
+          <label *ngIf="game.currentTile.left != 'prairie'" ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Gauche"> à gauche
           </label>
           <label
             *ngIf="game.currentTile.name === 'pppp_1' || game.currentTile.name === 'pppp_2' || game.currentTile.name === 'pppp_3' || game.currentTile.name === 'pppp_4' || game.currentTile.name === 'pprp_1' || game.currentTile.name === 'pprp_2'"
-            ngbButtonLabel class="btn-primary">
-            <input ngbButton [(ngModel)]="game.position" type="radio" value="Centre"> Centre
+            ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Centre"> au centre
           </label>
-          <label ngbButtonLabel class="btn-primary">
-            <input ngbButton [(ngModel)]="game.position" type="radio" value="Aucun"> Aucun
+          <label ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Aucun"> aucun
           </label>
-    
-        </div>
-              </form>
       </div>
     </div>
   </div>
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-outline-dark" (click)="c('Save click')">Validez le choix</button>
+  <div class="text-center">
+    <img class="imgModal" id='image' src="{{game.currentTile.img}}" [ngClass]="{'rotate90': game.currentRotation == 90, 'rotate180': game.currentRotation == 180, 'rotate270': game.currentRotation == 270, 
+        'voleurHaut': game.position === 'Haut', 'voleurBas': game.position === 'Bas', 'voleurDroite': game.position === 'Droite', 'voleurGauche': game.position === 'Gauche', 'voleurCentre': game.position === 'Centre'}">
   </div>
-
+  <div class="modal-footer justify-content-center">
+    <button type="submit" class="btn btn-outline-dark" (click)="c('Save click');submitVoleur()">Validez ce choix</button>
+  </div>
+  </form>
 </ng-template>

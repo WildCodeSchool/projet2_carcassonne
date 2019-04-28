@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Tuile, tilesDeck } from './tuilesData';
+import { Tuile, tilesDeck, startTile } from './tuilesData';
 import { isNull, nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
 
 
@@ -9,6 +9,7 @@ import { isNull, nullSafeIsEquivalent } from '@angular/compiler/src/output/outpu
 export class MapService {
 
   public cases : Tuile[][] = undefined
+  
 
   constructor() { }
 
@@ -20,7 +21,7 @@ export class MapService {
         this.cases[i][j] = undefined
       }
     }
-    this.cases[72][72] = tilesDeck[31]
+    this.cases[72][72] = startTile[0]
     return this.cases
   }
   

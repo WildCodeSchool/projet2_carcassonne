@@ -41,11 +41,40 @@
 
 .container-fluid {
   height: 100%;
-  overflow: hidden;
-  width: 100%;
-  position: fixed;
-  background-image: url(../../assets/map/fondmap2.jpg);
-  opacity: 1;
-  width: 100%;
-  background: cover;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+    background-image: url(../../assets/map/fondmap.jpg);
+    opacity: 1;
+    width: 100%;
+    background: cover;
+}
+
+.imgModal {
+  width: 50%;
+}
+
+.voleurHaut {
+  top: 2%;
+  right: 50%;
+}
+
+.voleurDroite {
+  top: 50%;
+  right: 2%;
+}
+
+.voleurBas {
+  bottom: 2%;
+  right: 50%;
+}
+
+.voleurGauche {
+  left: 2%;
+  top: 50%;
+}
+
+.voleurCentre {
+  top: 50%;
+  right: 50%;
 }

@@ -15,7 +15,8 @@ export class Tuile {
     public shield: boolean,
     public rotation = 0,
     public iPos:number = 0,
-    public jPos:number = 0
+    public jPos:number = 0,
+    public position:string = 'Aucun'
     
     ) {}
 
@@ -66,7 +67,6 @@ export class Tuile {
  let rprp_7 = new Tuile('rprp_7','../assets/Tiles/rprp-7.png','route', 'prairie', 'route', 'prairie', false);
  let rprp_8 = new Tuile('rprp_8','../assets/Tiles/rprp-8.png','route', 'prairie', 'route', 'prairie', false);
  let rrrr = new Tuile('rrrr','../assets/Tiles/rrrr.png','route', 'route', 'route', 'route', false);
- let start = new Tuile('start','../assets/Tiles/start.png','ville', 'route', 'prairie', 'route', false);
  let vppp_1 = new Tuile('vppp_1','../assets/Tiles/vppp-1.png','ville', 'prairie', 'prairie', 'prairie', false);
  let vppp_2 = new Tuile('vppp_2','../assets/Tiles/vppp-2.png','ville', 'prairie', 'prairie', 'prairie', false);
  let vppp_3 = new Tuile('vppp_3','../assets/Tiles/vppp-3.png','ville', 'prairie', 'prairie', 'prairie', false);
@@ -107,7 +107,7 @@ export class Tuile {
  let vprr_2 = new Tuile('vprr_2','../assets/Tiles/vprr-2.png','ville', 'prairie', 'route', 'route', false);
  let vprr_3 = new Tuile('vprr_3','../assets/Tiles/vprr-3.png','ville', 'prairie', 'route', 'route', false);
  let vppv_small = new Tuile('vppv_small','../assets/Tiles/vppv-small.png','ville', 'prairie', 'prairie', 'ville', false);
-
+ let start = new Tuile('start','../assets/Tiles/start.png','ville', 'route', 'prairie', 'route', false);
 
  export const tilesDeck = [ 
   pppp_1, 
@@ -141,7 +141,6 @@ export class Tuile {
   rprp_7,
   rprp_8,
   rrrr,
-  start,
   vppp_1,
   vppp_2,
   vppp_3,
@@ -181,5 +180,9 @@ export class Tuile {
   vprr_1,
   vprr_2,
   vprr_3,
-  vppv_small
+  vppv_small,
+]
+
+export const startTile = [ 
+  start
 ]

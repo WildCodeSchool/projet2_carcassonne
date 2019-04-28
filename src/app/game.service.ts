@@ -11,7 +11,6 @@ import { HomeComponent } from './home/home.component';
 })
 export class GameService {
 
-  // removeStartTile = tilesDeck.splice(31, 1)
   currentTile = undefined
   totalTile: number = tilesDeck.length
   currentRotation = 0
@@ -146,32 +145,12 @@ export class GameService {
     } return this.currentTile
   }
 
-  // poser un voleur
-  //   poseThief(){
-  //     switch(playerArray){
-  // case (this.currentTile.bottom):
 
-  //   }
-  // }
-
-  //game State machine
-
-  nbPlayer: number = 5;
   name: string;
   family: string
   playerReal: any = {};
   playersArray = [];
-  players: number = 1;
 
-  nextPlayer() {
-    this.players += 1
-    if (this.players >= this.nbPlayer) {
-      this.players = 1
-    }
-    this.currentState = this.STATE_PICK_TILE
-    console.log("Changement d'état vers la pioche d'une tuile")
-    return this.players
-  }
 
   playersGame() {
     console.log()
@@ -210,25 +189,34 @@ export class GameService {
 
   voleurPosition() {
     switch (this.position) {
-      case ('haut'):
-        this.position = "haut"
-        break
-      case ('bas'):
-        this.position = "bas"
-        break
-      case ('droite'):
-        this.position = "droite"
-        break
-      case ('gauche'):
-        this.position = "gauche"
-        break
-      case ('centre'):
-        this.position = "centre"
-        break
-      case ('aucun'):
-        this.position = "aucun"
-        break
+      case ('Haut'):
+        return this.currentTile.position = "Haut"
+      case ('Bas'):
+        return this.currentTile.position = "Bas"
+      case ('Droite'):
+        return this.currentTile.position = "Droite"
+      case ('Gauche'):
+        return this.currentTile.position = "Gauche"
+      case ('Centre'):
+        return this.currentTile.position = "Centre"
+      case ('Aucun'):
+        return this.currentTile.position = "Aucun"
     }
+  }
+
+  //game State machine
+
+  nbPlayer: number = 5;
+  players: number = 1;
+
+  nextPlayer() {
+    this.players += 1
+    if (this.players >= this.nbPlayer) {
+      this.players = 1
+    }
+    this.currentState = this.STATE_PICK_TILE
+    console.log("Changement d'état vers la pioche d'une tuile")
+    return this.players
   }
 
   public readonly STATE_PICK_TILE = 'Piocher une carte'

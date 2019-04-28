@@ -18,7 +18,7 @@ export class PiocheComponent implements OnInit {
     private gameState: GameStateService) { }
 
   ngOnInit() {
-
+    
   }
 
   rotateTile() {

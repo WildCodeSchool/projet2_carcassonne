@@ -3,6 +3,7 @@ import { DeckService } from '../deck.service';
 import { GameService } from '../game.service';
 import { MapService } from '../map.service';
 import { PanZoomConfig, PanZoomAPI, PanZoomModel } from 'ng2-panzoom';
+import { tilesDeck } from '../tuilesData';
 
 @Component({
   selector: 'app-map',
@@ -12,7 +13,7 @@ import { PanZoomConfig, PanZoomAPI, PanZoomModel } from 'ng2-panzoom';
 export class MapComponent implements OnInit {
 
   cases = undefined
-  tileRotation: number;
+
   private panZoomConfig: PanZoomConfig = new PanZoomConfig({
     zoomLevels: 4,
     scalePerZoomLevel: 1.5,
@@ -27,13 +28,16 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.cases = this.map.generateMap()
-    
   }
 
   rotateTile() {
-    this.tileRotation = this.game.rotationTile()
+    this.game.rotationTile()
   }
-  
+
+  submitVoleur(){
+    this.game.voleurPosition()
+  }
+
 }
 
 
