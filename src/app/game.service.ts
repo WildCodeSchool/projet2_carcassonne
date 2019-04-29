@@ -14,7 +14,6 @@ export class GameService {
   currentTile = undefined
   totalTile: number = tilesDeck.length
   currentRotation = 0
-  currentTilePlayerIndex = []
   checkSideState: boolean = undefined
 
 
@@ -144,9 +143,7 @@ export class GameService {
       }
     }
     this.currentTile.playerID = this.playerTurnIndex
-    this.currentTilePlayerIndex.push(this.currentTile.playerID)
     this.currentPlayer = this.playersArray[this.currentTile.playerID]
- 
     return this.currentTile
   }
 
@@ -215,13 +212,13 @@ export class GameService {
       case ('Aucun'):
         this.currentTile.position = "Aucun"
         break
-    } this.nextPlayer()
+    } 
+    this.currentTile.playerID = this.playerTurnIndex
+    this.nextPlayer()
   }
 
   //game State machine
 
-  // nbPlayer: number = 5;
-  // players: number = 1;
   playerTurnIndex = 0
   currentPlayer = undefined
 
@@ -241,9 +238,9 @@ export class GameService {
     this.currentState = this.STATE_PICK_TILE
     console.log("Changement d'état vers la pioche d'une tuile")
 
-    // this.currentPlayer = this.playersArray[this.currentTile.playerID]
-    // console.log(`Au tour de ${this.currentPlayer.name} de jouer`)
-    // return this.currentPlayer
+    this.currentPlayer = this.playersArray[this.playerTurnIndex]
+    console.log(`Au tour de ${this.currentPlayer.name} de jouer`)
+   
   }
 
   public readonly STATE_PICK_TILE = 'Piocher une carte'
