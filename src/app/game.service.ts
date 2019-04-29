@@ -16,6 +16,7 @@ export class GameService {
   currentRotation = 0
   currentTileIndex = []
   checkSideState: boolean = undefined
+  playersLeft: number;
 
   constructor(private deck: DeckService, private map: MapService) { }
 
@@ -183,6 +184,7 @@ export class GameService {
       default:
         console.log('erreur')
     }
+    this.playersLeft = 5 -(this.playersArray.length)
   }
 
   position: string

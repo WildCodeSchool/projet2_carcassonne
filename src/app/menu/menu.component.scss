@@ -3,14 +3,15 @@
 }
 
 #logo {
-  width: 25%;
+  width: 20%;
   height: 15%;
   -webkit-filter: drop-shadow(2px 2px 2px rgb(233, 230, 88));
 }
 
 .imageTeam {
   width: 80px;
-  margin-left: 4vw;
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 
 .playerName {
@@ -18,12 +19,16 @@
   font-family: "Trade Winds", cursive;
 }
 
-h2 {
+h3 {
   text-align: center;
   color:white;
   text-shadow: 0px 0px 4px black;
   font-family: "Trade Winds", cursive;
   text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+}
+td {
+  height: 30px;
+  vertical-align: top;
 }
 
 tr {

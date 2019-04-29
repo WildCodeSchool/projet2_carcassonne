@@ -2,12 +2,12 @@
 
   <div class="row text-center">
     <div class="col">
-      <img class="titre" src="/assets/home/logo.png">
+      <img class="titre" src="../../assets/home/logo.png">
     </div>
   </div>
   <div class="row">
     <div class="col-10">
-      <button type="button" class="btn btn-dark start justify-content-center" routerLink="/game-start">Lancer
+      <button type="button" class="btn btn-dark start justify-content-center" *ngIf="4>tableLength" routerLink="/game-start">Lancer
         l'aventure</button>
     </div>
   </div>
@@ -19,7 +19,7 @@
         <h4 class="pickfamily text-center">Ajoutez un joueur</h4>
         <form (ngSubmit)="submitPlayer()" name="joueur">
           <h4><label class="" for="user" class="text-center">Entrez votre nom</label></h4>
-          <input class="inputnom" name="user" type="text" [(ngModel)]="game.name" #user="ngModel">
+          <input class="inputnom" name="user" type="text" [(ngModel)]="game.name" #user="ngModel" maxlength="10">
           <h4 class="pickfamily">Choisissez votre Famille</h4>
           <div>
             <input type="radio" [(ngModel)]="game.family" name="family" value="arryn">
