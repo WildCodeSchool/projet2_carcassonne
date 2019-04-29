@@ -4,7 +4,7 @@
           <div class="row" *ngFor="let row of cases; let i=index" id="row{{i}}">
             <div *ngFor="let c of row; let j=index" class="cell" id="cell{{i}}-{{j}}" (click)="game.onTileClick(i,j)">
               <img *ngIf="c" src="{{c.img}}" class='tuile rotate{{c.rotation}}' alt="">
-              <img *ngIf="c != null" src="../../assets/family/greyjoy.png" class='imgModalVoleur voleur{{c.position}}' alt="">
+              <img *ngIf="c != null" src="{{game.currentPlayer.image}}" class='imgModalVoleur voleur{{c.position}}' alt="">
             </div>
           </div>
         </div>

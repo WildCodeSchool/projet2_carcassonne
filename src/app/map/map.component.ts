@@ -28,15 +28,16 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.cases = this.map.generateMap()
+    this.game.playerTurn()
   }
 
   rotateTile() {
     this.game.rotationTile()
   }
 
-  submitVoleur(){
-    this.game.voleurPosition()
-  }
+  // submitVoleur(){
+  //   this.game.voleurPosition()
+  // }
 
 }
 

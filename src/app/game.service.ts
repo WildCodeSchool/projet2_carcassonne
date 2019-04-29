@@ -14,9 +14,9 @@ export class GameService {
   currentTile = undefined
   totalTile: number = tilesDeck.length
   currentRotation = 0
-  currentTileIndex = []
+  currentTilePlayerIndex = []
   checkSideState: boolean = undefined
-  playersLeft: number;
+
 
   constructor(private deck: DeckService, private map: MapService) { }
 
@@ -142,8 +142,12 @@ export class GameService {
       } else {
         undefined
       }
-
-    } return this.currentTile
+    }
+    this.currentTile.playerID = this.playerTurnIndex
+    this.currentTilePlayerIndex.push(this.currentTile.playerID)
+    this.currentPlayer = this.playersArray[this.currentTile.playerID]
+ 
+    return this.currentTile
   }
 
 
@@ -151,74 +155,95 @@ export class GameService {
   family: string
   playerReal: any = {};
   playersArray = [];
+  playersLeft: number;
 
 
   playersGame() {
     console.log()
     switch (this.family) {
       case ('arryn'):
-        this.playerReal = { name: this.name, image: "../assets/family/arryn.png", token: 7, score: 0 }
+        this.playerReal = { name: this.name, image: "/assets/family/arryn.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('greyjoy'):
-        this.playerReal = { name: this.name, image: "../assets/family/greyjoy.png", token: 7, score: 0 }
+        this.playerReal = { name: this.name, image: "/assets/family/greyjoy.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('lannister'):
-        this.playerReal = { name: this.name, image: "../assets/family/lannister.png", token: 7, score: 0 }
+        this.playerReal = { name: this.name, image: "/assets/family/lannister.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('stark'):
-        this.playerReal = { name: this.name, image: "../assets/family/stark.png", token: 7, score: 0 }
+        this.playerReal = { name: this.name, image: "/assets/family/stark.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('targa'):
-        this.playerReal = { name: this.name, image: "../assets/family/targa.png", token: 7, score: 0 }
+        this.playerReal = { name: this.name, image: "/assets/family/targa.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       default:
         console.log('erreur')
     }
-    this.playersLeft = 5 -(this.playersArray.length)
+    this.playersLeft = 5 - (this.playersArray.length)
   }
+
 
   position: string
 
   voleurPosition() {
     switch (this.position) {
       case ('Haut'):
-        return this.currentTile.position = "Haut"
+        this.currentTile.position = "Haut"
+        break
       case ('Bas'):
-        return this.currentTile.position = "Bas"
+        this.currentTile.position = "Bas"
+        break
       case ('Droite'):
-        return this.currentTile.position = "Droite"
+        this.currentTile.position = "Droite"
+        break
       case ('Gauche'):
-        return this.currentTile.position = "Gauche"
+        this.currentTile.position = "Gauche"
+        break
       case ('Centre'):
-        return this.currentTile.position = "Centre"
+        this.currentTile.position = "Centre"
+        break
       case ('Aucun'):
-        return this.currentTile.position = "Aucun"
-    }
+        this.currentTile.position = "Aucun"
+        break
+    } this.nextPlayer()
   }
 
   //game State machine
 
-  nbPlayer: number = 5;
-  players: number = 1;
+  // nbPlayer: number = 5;
+  // players: number = 1;
+  playerTurnIndex = 0
+  currentPlayer = undefined
+
+  playerTurn() {
+    this.currentPlayer = this.playersArray[this.playerTurnIndex]
+    console.log(`Au tour de ${this.currentPlayer.name} de jouer`)
+    return this.currentPlayer
+  }
 
   nextPlayer() {
-    this.players += 1
-    if (this.players >= this.nbPlayer) {
-      this.players = 1
+    this.playerTurnIndex += 1
+
+    if (this.playerTurnIndex >= this.playersArray.length) {
+      this.playerTurnIndex = 0
     }
+
     this.currentState = this.STATE_PICK_TILE
     console.log("Changement d'état vers la pioche d'une tuile")
-    return this.players
+
+    // this.currentPlayer = this.playersArray[this.currentTile.playerID]
+    // console.log(`Au tour de ${this.currentPlayer.name} de jouer`)
+    // return this.currentPlayer
   }
 
   public readonly STATE_PICK_TILE = 'Piocher une carte'

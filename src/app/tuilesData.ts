@@ -16,7 +16,8 @@ export class Tuile {
     public rotation = 0,
     public iPos:number = 0,
     public jPos:number = 0,
-    public position:string = "Aucun"
+    public position:string = "Aucun",
+    public playerID: number = undefined
     
     ) {}
 
