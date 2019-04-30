@@ -46,6 +46,7 @@
       <div class="col-5 tableaujoueurs">
         <h4 class="placesleft text-center">Reste {{tableLength}} place(s) dans la partie</h4>
         <div class="nomJoueur" *ngFor="let player of game.playersArray">
+
           <td>
             <img class="familyimage" src="{{player.image}}" alt="">
           </td>
@@ -55,6 +56,10 @@
         </div>
       </div>
       <div class="col-1"></div>
+      <audio autoplay loop>
+        <source src="/assets/homezik.mp3" type="audio/mp3" >
+
+      </audio>
     </div>
   </div>
 </div>

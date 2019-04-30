@@ -15,5 +15,9 @@ export class AppComponent {
   navigateToStart(){
     this.router.navigate(['/game-start'])
   }
+
+    navigateToRules(){
+      this.router.navigate(['/rules'])
+  }
  
 }

@@ -17,6 +17,7 @@ import { GameStartComponent } from './game-start/game-start.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { Ng2PanZoomModule } from 'ng2-panzoom';
+import { RulesComponent } from './rules/rules.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +31,11 @@ const appRoutes: Routes = [
     component: GameStartComponent
   }
 ,
+{
+  path: 'rules',
+  component: RulesComponent
+}
+,
  
   {
     path: '**',
@@ -41,12 +47,12 @@ const appRoutes: Routes = [
     path: 'retour-menu',
     component: HomeComponent
   }
- 
- 
+,
+
+  
  ];
-
-
-
+ 
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +62,7 @@ const appRoutes: Routes = [
     ModalComponent,
     HomeComponent,
     GameStartComponent,
+    RulesComponent,
   ],
   imports: [
     BrowserModule,

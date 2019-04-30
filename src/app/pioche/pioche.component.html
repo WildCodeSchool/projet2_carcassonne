@@ -10,13 +10,14 @@
           [ngClass]="{'rotate90': game.currentRotation == 90 , 'rotate180': game.currentRotation == 180, 'rotate270': game.currentRotation == 270}">
       </div>
       <div class="flip-box-back">
-        <img src="../../assets/backcard.jpg">
+        <img src="/assets/backcard.jpg">
       </div>
     </div>
   </div>
   <br>
-  
-  <button (click)="rotateTile()">Pivotez la tuile !</button>
+ 
+  <button (click)="rotateTile()">Pivoter la tuile!</button>
+  <button type="button" class="btn btn-primary">Aide ?</button>
 </div>
 
 

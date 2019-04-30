@@ -15,6 +15,8 @@ export class GameService {
   totalTile: number = tilesDeck.length
   currentRotation = 0
   checkSideState: boolean = undefined
+  playersLeft: number;
+  tileSound: HTMLAudioElement;
 
 
   constructor(private deck: DeckService, private map: MapService) { }
@@ -30,6 +32,9 @@ export class GameService {
     if (this.currentTile === undefined) {
       this.currentRotation = 0
       this.currentTile = this.deck.pickTile()
+
+
+
       console.log(`rotation : ${this.currentTile.rotation}`)
       console.log(`top : ${this.currentTile.top}`)
       console.log(`right : ${this.currentTile.right}`)
@@ -136,6 +141,10 @@ export class GameService {
       if (this.checkSideState) {
         this.map.cases[i][j] = this.currentTile
         this.currentState = this.STATE_ASK_THIEF
+        this.tileSound = new Audio()
+        this.tileSound.src = "/assets/rockfall1.mp3"
+        this.tileSound.load()
+        this.tileSound.play()
         console.log("Changement d'état vers la demande de poser un voleur")
       } else {
         undefined
@@ -185,7 +194,9 @@ export class GameService {
       default:
         console.log('erreur')
     }
-    // this.playersLeft = 5 - (this.playersArray.length)
+
+    this.playersLeft = 5 - (this.playersArray.length)
+
   }
 
 
