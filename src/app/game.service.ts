@@ -213,10 +213,11 @@ export class GameService {
         break
     } 
     this.currentTile.playerID = this.playerTurnIndex
-    this.nextPlayer()
     if (this.position != 'Aucun') {
-      this.playerReal.token -= 1
+      this.playersArray[this.playerTurnIndex].token -= 1
     }
+    this.nextPlayer()
+    
   }
    
 
