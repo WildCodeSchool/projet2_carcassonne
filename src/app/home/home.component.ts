@@ -11,9 +11,7 @@ export class HomeComponent implements OnInit {
   tableLength = 5
   tileSound: any;
   
-
   constructor(public game: GameService, private deck: DeckService) { }
-
 
   submitPlayer() {
     if (this.tableLength > 0) {
@@ -25,10 +23,7 @@ export class HomeComponent implements OnInit {
     this.tileSound.play()
     
   }}
-  
-  
 
-  
   
   ngOnInit() {
     

@@ -1,8 +1,8 @@
 
 export class Tuile {
 
-  static readonly SideKeys: string[] = ["top", "left", "bottom", "right"]
-  static readonly RotationKeys: number[] = [0, 90, 180, 270]
+  private static readonly SideKeys: string[] = ["top", "left", "bottom", "right"]
+  private static readonly RotationKeys: number[] = [0, 90, 180, 270]
 
     constructor (
       
@@ -21,18 +21,18 @@ export class Tuile {
     
     ) {}
 
-     getSideKeys(side:string, rotation:number, currentTile) {
+     getSideKeys(side:string) {
       // console.log(`côté à tester : ${side}`)
       let sidePos = Tuile.SideKeys.indexOf(side)
       // console.log(`position du côté à tester : ${sidePos}`)
-      let rotationPos = Tuile.RotationKeys.indexOf(rotation)
+      let rotationPos = Tuile.RotationKeys.indexOf(this.rotation)
       // console.log(`valeur de la rotation : ${rotation}`)
       // console.log(`position dans le tableau rotation : ${rotationPos}`)
       let newKeys = Tuile.SideKeys[(sidePos + rotationPos) % Tuile.SideKeys.length]
       // console.log(`newKeys : ${newKeys}`)
       // console.log(`valeur du nouveau côté : ${currentTile[newKeys]}`)
       // console.log(`-----------------------`)
-      return currentTile[newKeys]
+      return this[newKeys]
     }
   }
 

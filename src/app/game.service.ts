@@ -36,9 +36,6 @@ export class GameService {
     if (this.currentTile === undefined) {
       this.currentRotation = 0
       this.currentTile = this.deck.pickTile()
-
-
-
       console.log(`rotation : ${this.currentTile.rotation}`)
       console.log(`top : ${this.currentTile.top}`)
       console.log(`right : ${this.currentTile.right}`)
@@ -73,10 +70,10 @@ export class GameService {
     this.currentTile.iPos = iPos
     this.currentTile.jPos = jPos
 
-    let sideTopDynamic = Tuile.prototype.getSideKeys('top', this.currentRotation, this.currentTile)
-    let sideRightDynamic = Tuile.prototype.getSideKeys('right', this.currentRotation, this.currentTile)
-    let sideBottomDynamic = Tuile.prototype.getSideKeys('bottom', this.currentRotation, this.currentTile)
-    let sideLeftDynamic = Tuile.prototype.getSideKeys('left', this.currentRotation, this.currentTile)
+    let sideTopDynamic = this.currentTile.getSideKeys('top')
+    let sideRightDynamic = this.currentTile.getSideKeys('right')
+    let sideBottomDynamic = this.currentTile.getSideKeys('bottom')
+    let sideLeftDynamic = this.currentTile.getSideKeys('left')
 
     this.currentTile.top = sideTopDynamic
     this.currentTile.right = sideRightDynamic
@@ -139,7 +136,7 @@ export class GameService {
   }
 
   onTileClick(i, j) {
-    // ligne pour ne poser qu'une seule fois
+        // ligne pour ne poser qu'une seule fois
     if (this.map.cases[i][j] != null) { return; }
     else {
       this.checkSide(i, j)
@@ -159,6 +156,7 @@ export class GameService {
     }
     this.currentTile.playerID = this.playerTurnIndex
     this.currentPlayer = this.playersArray[this.currentTile.playerID]
+    this.calculScoreAbbaye()
     return this.currentTile
   }
 
@@ -167,7 +165,7 @@ export class GameService {
   family: string
   playerReal: any = {};
   playersArray = [];
-  playersLeft: number;
+  playersLeft : number;
 
 
   playersGame() {
@@ -229,15 +227,16 @@ export class GameService {
       case ('Aucun'):
         this.currentTile.position = "Aucun"
         break
-    } 
+    }
     this.currentTile.playerID = this.playerTurnIndex
     if (this.position != 'Aucun') {
       this.playersArray[this.playerTurnIndex].token -= 1
     }
+    this.checkAbbayeWithThief()
     this.nextPlayer()
-    
+
   }
-   
+
 
 
   //game State machine
@@ -263,15 +262,64 @@ export class GameService {
 
     this.currentPlayer = this.playersArray[this.playerTurnIndex]
     console.log(`Au tour de ${this.currentPlayer.name} de jouer`)
-   
+
   }
+
+
+  AbbayeWithThief = []
+  thiefI: number
+  thiefJ: number
+
+  checkAbbayeWithThief() {
+    if ((this.currentTile.name === 'pppp_1' || this.currentTile.name === 'pppp_2' || this.currentTile.name === 'pppp_3'
+      || this.currentTile.name === 'pppp_4' || this.currentTile.name === 'pprp_1' || this.currentTile.name === 'pprp_2') && (this.position === 'Centre')) {
+      this.AbbayeWithThief.push([this.currentPlayer.name, this.currentTile.iPos, this.currentTile.jPos, false])
+
+    }
+  }
+
+  calculScoreAbbaye() {
+
+    for (let item = 0; item < this.AbbayeWithThief.length; item++) {
+      let coordI: number = this.AbbayeWithThief[item][1]
+      let coordJ: number = this.AbbayeWithThief[item][2]
+
+      if (this.map.cases[coordI + 1][coordJ - 1] &&
+        this.map.cases[coordI + 1][coordJ] &&
+        this.map.cases[coordI + 1][coordJ + 1] &&
+        this.map.cases[coordI][coordJ - 1] &&
+        this.map.cases[coordI][coordJ + 1] &&
+        this.map.cases[coordI - 1][coordJ - 1] &&
+        this.map.cases[coordI - 1][coordJ] &&
+        this.map.cases[coordI - 1][coordJ + 1]) {
+        if (this.AbbayeWithThief[item][3] === true) {
+          return
+        } else {
+          this.currentPlayer.score = this.currentPlayer.score + 9
+          this.AbbayeWithThief[item][3] = true
+        }
+      }
+    }
+  }
+
+  helpSentence: string
+  helpText(){
+    switch (this.currentState) {
+      case 'STATE_PICK_TILE':
+        return this.helpSentence = 'Piochez et pivotez si vous le désirez'
+      case 'STATE_CLICK_TILE':
+        return this.helpSentence = 'Posez votre tuile'
+      case 'STATE_ASK_THIEF':
+        return this.helpSentence = 'Posez un voleur si vous le désirez'
+    }
+  }
+
 
   public readonly STATE_PICK_TILE = 'Piocher une carte'
   public readonly STATE_CLICK_TILE = 'Poser une carte'
   public readonly STATE_ASK_THIEF = 'Demander poser voleur'
   public readonly STATE_CLICK_THIEF = 'Poser voleur'
   public currentState = this.STATE_PICK_TILE
-
 
 
   getMusic() {
@@ -288,54 +336,4 @@ export class GameService {
   this.tileSound=null
 }
 
-  
-
 }
-
-
-  //   thiefPosition = []
-  //   thiefI: number
-  //   thiefJ: number
-
-  //   checkScoreAbbaye(i, j) {
-  //     this.thiefPosition = [i, j]
-  //     this.thiefI = this.thiefPosition[i]
-  //     this.thiefJ = this.thiefPosition[j]
-  //     let abbayeDetection = this.map.cases[this.thiefI + 1][this.thiefJ - 1] &&
-  //                           this.map.cases[this.thiefI + 1][this.thiefJ] &&
-  //                           this.map.cases[this.thiefI + 1][this.thiefJ + 1] &&
-  //                           this.map.cases[this.thiefI][this.thiefJ - 1] &&
-  //                           this.map.cases[this.thiefI][this.thiefJ] &&
-  //                           this.map.cases[this.thiefI][this.thiefJ + 1] &&
-  //                           this.map.cases[this.thiefI - 1][this.thiefJ - 1] &&
-  //                           this.map.cases[this.thiefI - 1][this.thiefJ] &&
-  //                           this.map.cases[this.thiefI - 1][this.thiefJ + 1]
-  // if (abbayeDetection!=null){
-  //   this.playerReal.score = this.playerReal.score + 9
-  // }
-  //   }
-  //   checkScoreRoad(){
-  // let scoreRoad = 0
-  // if (this.deck.pickTile.name === 'pprp_1' ||
-  //     this.deck.pickTile.name === 'pprp_2' ||
-  //     this.deck.pickTile.name === 'prrr_1' ||
-  //     this.deck.pickTile.name === 'prrr_2' ||
-  //     this.deck.pickTile.name === 'prrr_3' ||
-  //     this.deck.pickTile.name === 'prrr_4' ||
-  //     this.deck.pickTile.name === 'rrrr' ||
-  //     this.deck.pickTile.name === 'vrrr_1' ||
-  //     this.deck.pickTile.name === 'vrrr_2' ||
-  //     this.deck.pickTile.name === 'vrrr_3' ||
-  //     this.deck.pickTile.name === 'vvrv_1' ||
-  //     this.deck.pickTile.name === 'vvrv_b_1' ||
-  //     this.deck.pickTile.name === 'vvrv_b_2'){
-
-  // while(this.deck.pickTile.name.indexOf('r')){
-  //   scoreRoad +=1
-  //   if ('une tuile a un voleur'){
-  //     this.playerReal.score = this.playerReal.score + scoreRoad
-  // }}
-  // }
-  //   }
-
-

@@ -1,5 +1,4 @@
 <div class="container-fluid">
-
     <pan-zoom [config]="panZoomConfig">
         <div *ngIf="cases">
           <div class="row" *ngFor="let row of cases; let i=index" id="row{{i}}">
@@ -8,7 +7,6 @@
               <img *ngIf="c != undefined && game.playersArray[c.playerID] != undefined" src="{{game.playersArray[c.playerID].image}}" class='imgModalVoleur voleur{{c.position}}' alt="">
             </div>
           </div>
-
         </div>
   </pan-zoom>
 </div>

@@ -5,17 +5,23 @@
   background-size: cover;
   height: 110%;
 }
+
 .tableaujoueurs,
 .enterPlayer {
   background-color: #ffffff65;
 }
+
 .inputnom {
   margin: 20px;
 }
-.entername, .pickfamily, .placesleft, .nomJoueur {
-font-size: 2em;
 
+.entername,
+.pickfamily,
+.placesleft,
+.nomJoueur {
+  font-size: 2em;
 }
+
 @keyframes heartBeat {
   0% {
     transform: scale(1);
@@ -54,6 +60,7 @@ font-size: 2em;
   width: 20vw;
   box-shadow: 10px 5px 5px rgb(61, 66, 77);
 }
+
 .validate {
   font-size: 3vh;
   background-color: #374b9e;
@@ -78,10 +85,21 @@ font-size: 2em;
   width: 70px;
   padding: 8px;
 }
+
 div {
   font-family: "New Rocker", cursive;
   color: #374b9e;
   padding: 10px;
 }
+
+.btn-dark.validate:hover {
+  color: black;
+}
 // font-family: 'New Rocker', cursive;
 // font-family: 'Trade Winds', cursive;
+.egg {
+  background-image: url(../../assets/home/homegif.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
