@@ -35,7 +35,7 @@
     <div class="text-center imgModalVoleur">
       <img class="imgModal" id='image' src="{{game.currentTile.img}}"
         [ngClass]="{'rotate90': game.currentRotation == 90, 'rotate180': game.currentRotation == 180, 'rotate270': game.currentRotation == 270}">
-      <img *ngIf="game.position != null" src="../../assets/family/greyjoy.png"
+      <img *ngIf="game.position != null" src="{{game.currentPlayer.image}}"
         [ngClass]="{'voleurHaut': game.position === 'Haut', 'voleurBas': game.position === 'Bas', 'voleurDroite': game.position === 'Droite', 'voleurGauche': game.position === 'Gauche', 'voleurCentre': game.position === 'Centre', 'voleurAucun': game.position === 'Aucun'}">
     </div>
     <div class="modal-footer justify-content-center">
