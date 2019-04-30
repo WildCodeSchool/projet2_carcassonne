@@ -15,7 +15,6 @@ export class GameService {
   totalTile: number = tilesDeck.length
   currentRotation = 0
   checkSideState: boolean = undefined
-  playersLeft: number;
   tileSound: HTMLAudioElement;
 
 
