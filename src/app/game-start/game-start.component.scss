@@ -22,3 +22,14 @@
     height: 15%;
     z-index: 1;
 }
+.help {
+    background-image: url(/assets/pioche_fond/stone.JPG);
+    position: fixed;
+    width: 300px;
+    right: 80%;
+    bottom: 10%;
+    padding: 1% 1% 1% 1%;
+    z-index: 29;
+    border-radius: 10px;
+    box-shadow: 4px 4px 5px 2px black;
+}

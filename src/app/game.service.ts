@@ -130,7 +130,7 @@ export class GameService {
   }
 
   onTileClick(i, j) {
-    // ligne pour ne poser qu'une seule fois
+        // ligne pour ne poser qu'une seule fois
     if (this.map.cases[i][j] != null) { return; }
     else {
       this.checkSide(i, j)
@@ -157,7 +157,7 @@ export class GameService {
   family: string
   playerReal: any = {};
   playersArray = [];
-  playersLeft: number;
+  playersLeft : number;
 
 
   playersGame() {
@@ -294,28 +294,17 @@ export class GameService {
     }
   }
 
-  //   checkScoreRoad(){
-  // let scoreRoad = 0
-  // if (this.deck.pickTile.name === 'pprp_1' ||
-  //     this.deck.pickTile.name === 'pprp_2' ||
-  //     this.deck.pickTile.name === 'prrr_1' ||
-  //     this.deck.pickTile.name === 'prrr_2' ||
-  //     this.deck.pickTile.name === 'prrr_3' ||
-  //     this.deck.pickTile.name === 'prrr_4' ||
-  //     this.deck.pickTile.name === 'rrrr' ||
-  //     this.deck.pickTile.name === 'vrrr_1' ||
-  //     this.deck.pickTile.name === 'vrrr_2' ||
-  //     this.deck.pickTile.name === 'vrrr_3' ||
-  //     this.deck.pickTile.name === 'vvrv_1' ||
-  //     this.deck.pickTile.name === 'vvrv_b_1' ||
-  //     this.deck.pickTile.name === 'vvrv_b_2'){
-
-  // while(this.deck.pickTile.name.indexOf('r')){
-  //   scoreRoad +=1
-  //   if ('une tuile a un voleur'){
-  //     this.playerReal.score = this.playerReal.score + scoreRoad
-  // }}
-  // }
+  helpSentence: string
+  helpText(){
+    switch (this.currentState) {
+      case 'STATE_PICK_TILE':
+        return this.helpSentence = 'Piochez et pivotez si vous le désirez'
+      case 'STATE_CLICK_TILE':
+        return this.helpSentence = 'Posez votre tuile'
+      case 'STATE_ASK_THIEF':
+        return this.helpSentence = 'Posez un voleur si vous le désirez'
+    }
+  }
 
 
   public readonly STATE_PICK_TILE = 'Piocher une carte'
@@ -324,6 +313,5 @@ export class GameService {
   public readonly STATE_CLICK_THIEF = 'Poser voleur'
   public currentState = this.STATE_PICK_TILE
 
+
 }
-
-

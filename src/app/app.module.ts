@@ -18,6 +18,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { Ng2PanZoomModule } from 'ng2-panzoom';
 import { RulesComponent } from './rules/rules.component';
+import { HelpComponent } from './help/help.component';
 
 
 const appRoutes: Routes = [
@@ -63,6 +64,7 @@ const appRoutes: Routes = [
     HomeComponent,
     GameStartComponent,
     RulesComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule,
