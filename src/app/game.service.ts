@@ -148,6 +148,8 @@ export class GameService {
         this.tileSound.src = "/assets/rockfall1.mp3"
         this.tileSound.load()
         this.tileSound.play()
+        
+        
         console.log("Changement d'état vers la demande de poser un voleur")
       } else {
         undefined
