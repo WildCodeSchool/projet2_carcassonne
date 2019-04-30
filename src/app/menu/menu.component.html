@@ -1,10 +1,6 @@
 <div class="container-fluid bandeau">
     <div class="row">
-        
-        
         <img id="logo" src="/assets/home/logo.png" routerLink="/retour-menu">
-      
-
         <div *ngFor="let player of game.playersArray">
             <div class="playerName">
                 <td>
@@ -16,10 +12,7 @@
                     <tr>Voleurs : {{player.token}}</tr>
                 </td>
             </div>
-            
         </div>
-        <button routerLink="/rules">?</button>
-        
     </div>
     <div class="bandebas"></div>
 </div>

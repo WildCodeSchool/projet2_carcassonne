@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   tileSound: any;
   
 
-  constructor(private game: GameService, private deck: DeckService) { }
+  constructor(public game: GameService, private deck: DeckService) { }
 
 
   submitPlayer() {
@@ -24,17 +24,18 @@ export class HomeComponent implements OnInit {
     this.tileSound.load()
     this.tileSound.play()
     
-  }
-  }
+  }}
+  
+  
 
+  
+  
   ngOnInit() {
-    this.tileSound = new Audio()
-    this.tileSound.src = "/assets/homezik.mp3"
-    this.tileSound.load()
-    this.tileSound.play()
-    this.tileSound.loop=true
-    this.tileSound.volume=0.3
+    
+    this.game.getMusic()
+    
   }
+  
 
   public readonly STATE_PICK_TILE = 'Piocher une carte'
   public readonly STATE_CLICK_TILE = 'Poser une carte'
