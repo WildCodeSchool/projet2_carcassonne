@@ -15,6 +15,7 @@ export class ModalComponent implements OnChanges {
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private game: GameService,) {
     // customize default values of modals used by this component tree
+    
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -22,9 +23,10 @@ export class ModalComponent implements OnChanges {
   //faire une methode ngOnChange avec l'input turnState + <app-modal [turnState]="gameService.f"></app-modal> dans le app component
   
   @ViewChild('content') content: ElementRef;
+  playerReal = this.game.playerReal
 
   ngOnChanges(changes: SimpleChanges){
-    if (this.turnState === this.game.STATE_ASK_THIEF && this.game.checkSideState === true){
+    if (this.turnState === this.game.STATE_ASK_THIEF && this.game.checkSideState === true && this.playerReal.token>0) {
       setTimeout(()=> this.modalService.open(this.content), 1000);
       console.log(`état de la fonction checkSide : ${this.game.checkSideState}`)
       console.log(changes)

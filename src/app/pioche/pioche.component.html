@@ -1,10 +1,8 @@
 <div class="text-center">
-
-  <button (click)="game.pickedTile();flipIt()">
-     {{game.totalTile}} tuiles restantes
+<p class="tilesleft">{{game.totalTile}} tuiles restantes</p>
+  <button class="picktile" (click)="game.pickedTile();flipIt()">
+     Piochez !
   </button>
-  <br>
-  <br>
   <div class="flip-box">
     <div class="flip-box-inner" [class.is-flipped]="flipped">
       <div class="flip-box-front">
@@ -18,7 +16,7 @@
   </div>
   <br>
   
-  <button (click)="rotateTile()">Pivoter la tuile!</button>
+  <button (click)="rotateTile()">Pivotez la tuile !</button>
 </div>
 
 

@@ -5,7 +5,6 @@
 #logo {
   width: 20%;
   height: 15%;
-  -webkit-filter: drop-shadow(2px 2px 2px rgb(233, 230, 88));
 }
 
 .imageTeam {
@@ -20,7 +19,6 @@
 }
 
 h3 {
-  text-align: center;
   color:white;
   text-shadow: 0px 0px 4px black;
   font-family: "Trade Winds", cursive;
@@ -41,7 +39,7 @@ tr {
   z-index: 1;
   overflow: hidden;
   position: fixed;
-  background-image: url(../../assets/nav.resized.jpg);
+  background-image: url(../../assets/country.jpg);
   background: cover;
 }
 .bandebas {
