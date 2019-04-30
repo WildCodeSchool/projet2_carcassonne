@@ -15,6 +15,9 @@ export class GameStartComponent implements OnInit {
     constructor(private route: ActivatedRoute, private gs: GameService)  { }
    
     ngOnInit() {
+
+    
+      
       // USE THIS
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.startID = parseInt(params.get('startID'));

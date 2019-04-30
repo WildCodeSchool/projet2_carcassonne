@@ -15,12 +15,17 @@ export class GameService {
   totalTile: number = tilesDeck.length
   currentRotation = 0
   checkSideState: boolean = undefined
-  tileSound: HTMLAudioElement;
-
+  
+  public tileSound: any;
 
   constructor(private deck: DeckService, private map: MapService) { }
 
   pickedTile() {
+    this.tileSound = new Audio()
+    this.tileSound.src = "/assets/cardflop2.mp3"
+    this.tileSound.load()
+    this.tileSound.play()
+
     if (this.totalTile <= 0) {
       this.currentTile = undefined
       alert('End of the game')
@@ -49,6 +54,7 @@ export class GameService {
       this.currentTile = undefined
       return
     }
+    
   }
 
 
@@ -141,6 +147,8 @@ export class GameService {
         this.tileSound.src = "/assets/rockfall1.mp3"
         this.tileSound.load()
         this.tileSound.play()
+        
+        
         console.log("Changement d'état vers la demande de poser un voleur")
       } else {
         undefined
@@ -313,5 +321,19 @@ export class GameService {
   public readonly STATE_CLICK_THIEF = 'Poser voleur'
   public currentState = this.STATE_PICK_TILE
 
+
+  getMusic() {
+  this.tileSound = new Audio()
+    this.tileSound.src = "/assets/homezik.mp3"
+    this.tileSound.load()
+    this.tileSound.play()
+    this.tileSound.loop=true
+    this.tileSound.volume=0.3
+}
+
+  ngOnDestroy(){
+  this.tileSound.pause()
+  this.tileSound=null
+}
 
 }

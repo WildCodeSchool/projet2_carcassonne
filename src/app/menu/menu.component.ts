@@ -7,10 +7,12 @@ import { GameService } from '../game.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+ 
 
   constructor(private game: GameService) { }
   
   ngOnInit() {
+    
   }
 
 }
