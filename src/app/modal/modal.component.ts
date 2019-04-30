@@ -27,7 +27,7 @@ export class ModalComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges){
     if (this.turnState === this.game.STATE_ASK_THIEF && this.game.checkSideState === true && this.playerReal.token>0) {
-      setTimeout(()=> this.modalService.open(this.content), 1000);
+      setTimeout(()=> this.modalService.open(this.content), 500);
       console.log(`état de la fonction checkSide : ${this.game.checkSideState}`)
       console.log(changes)
     }

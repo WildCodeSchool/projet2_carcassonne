@@ -1,3 +1,18 @@
+button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #374b9e;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px rgb(73, 73, 73);
+}
+
 button:hover {
   background-color: #3e8e41;
 }
@@ -8,25 +23,11 @@ button:active {
   transform: translateY(4px);
 }
 
-.btn.btn-primary {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #20b879;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 9px rgb(73, 73, 73);
-}
 
 .btn.btn-primary:hover {
-  background-color: #b44d4d;
+  background-color: #3e8e41;
 }
-h5 {
+h5, p{
   font-family: "New Rocker", cursive;
-  color: #374b9e;
+  color: #000000;
 }

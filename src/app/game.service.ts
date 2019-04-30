@@ -46,6 +46,7 @@ export class GameService {
       // console.log(tilesDeck.length)
       this.totalTile -= 1
       this.currentState = this.STATE_CLICK_TILE
+      this.helpText()
       console.log("Changement d'état vers la pose de la tuile piochée")
       return
     }
@@ -54,13 +55,13 @@ export class GameService {
       this.currentTile = undefined
       return
     }
-    
   }
 
 
   rotationTile() {
     this.currentTile.rotation = (this.currentTile.rotation + 90) % 360;
     this.currentRotation = this.currentTile.rotation
+    this.helpText()
     return this.currentRotation
   }
 
@@ -136,7 +137,8 @@ export class GameService {
   }
 
   onTileClick(i, j) {
-        // ligne pour ne poser qu'une seule fois
+
+    // ligne pour ne poser qu'une seule fois
     if (this.map.cases[i][j] != null) { return; }
     else {
       this.checkSide(i, j)
@@ -165,7 +167,7 @@ export class GameService {
   family: string
   playerReal: any = {};
   playersArray = [];
-  playersLeft : number;
+  playersLeft: number;
 
 
   playersGame() {
@@ -199,42 +201,42 @@ export class GameService {
       default:
         console.log('erreur')
     }
-
-    this.playersLeft = 5 - (this.playersArray.length)
-
   }
 
 
   position: string
 
   voleurPosition() {
-    switch (this.position) {
-      case ('Haut'):
-        this.currentTile.position = "Haut"
-        break
-      case ('Bas'):
-        this.currentTile.position = "Bas"
-        break
-      case ('Droite'):
-        this.currentTile.position = "Droite"
-        break
-      case ('Gauche'):
-        this.currentTile.position = "Gauche"
-        break
-      case ('Centre'):
-        this.currentTile.position = "Centre"
-        break
-      case ('Aucun'):
-        this.currentTile.position = "Aucun"
-        break
-    }
-    this.currentTile.playerID = this.playerTurnIndex
-    if (this.position != 'Aucun') {
-      this.playersArray[this.playerTurnIndex].token -= 1
-    }
-    this.checkAbbayeWithThief()
-    this.nextPlayer()
+    if (this.playersArray[this.playerTurnIndex].token > 0) {
+      switch (this.position) {
+        case ('Haut'):
+          this.currentTile.position = "Haut"
+          break
+        case ('Bas'):
+          this.currentTile.position = "Bas"
+          break
+        case ('Droite'):
+          this.currentTile.position = "Droite"
+          break
+        case ('Gauche'):
+          this.currentTile.position = "Gauche"
+          break
+        case ('Centre'):
+          this.currentTile.position = "Centre"
+          break
+        case ('Aucun'):
+          this.currentTile.position = "Aucun"
+          break
+      }
+      this.currentTile.playerID = this.playerTurnIndex
+      if (this.position != 'Aucun') {
+        this.playersArray[this.playerTurnIndex].token -= 1
+      }
+      this.checkAbbayeWithThief()
+      this.nextPlayer()
 
+    }
+    else { this.nextPlayer() }
   }
 
 
@@ -258,6 +260,7 @@ export class GameService {
     }
 
     this.currentState = this.STATE_PICK_TILE
+    this.helpText()
     console.log("Changement d'état vers la pioche d'une tuile")
 
     this.currentPlayer = this.playersArray[this.playerTurnIndex]
@@ -303,14 +306,12 @@ export class GameService {
   }
 
   helpSentence: string
-  helpText(){
+  helpText() {
     switch (this.currentState) {
-      case 'STATE_PICK_TILE':
-        return this.helpSentence = 'Piochez et pivotez si vous le désirez'
-      case 'STATE_CLICK_TILE':
-        return this.helpSentence = 'Posez votre tuile'
-      case 'STATE_ASK_THIEF':
-        return this.helpSentence = 'Posez un voleur si vous le désirez'
+      case this.STATE_PICK_TILE:
+        return this.helpSentence = "doit piocher et pivoter la tuile s'il le désire"
+      case this.STATE_CLICK_TILE:
+        return this.helpSentence = 'doit poser la tuile'
     }
   }
 

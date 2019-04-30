@@ -32,6 +32,7 @@ export class MapComponent implements OnInit {
     this.cases = this.map.generateMap()
     this.game.ngOnDestroy()
     this.game.playerTurn()
+    this.game.helpText()
   }
 
   

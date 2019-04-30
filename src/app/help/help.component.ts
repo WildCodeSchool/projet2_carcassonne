@@ -7,7 +7,7 @@ import { GameService } from '../game.service';
   styleUrls: ['./help.component.scss']
 })
 export class HelpComponent implements OnInit {
- 
+
   constructor(private game: GameService) { }
   
   ngOnInit() {
