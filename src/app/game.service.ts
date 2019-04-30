@@ -15,7 +15,7 @@ export class GameService {
   totalTile: number = tilesDeck.length
   currentRotation = 0
   checkSideState: boolean = undefined
-  
+
   public tileSound: any;
 
   constructor(private deck: DeckService, private map: MapService) { }
@@ -55,6 +55,7 @@ export class GameService {
       this.currentTile = undefined
       return
     }
+
   }
 
 
@@ -149,8 +150,8 @@ export class GameService {
         this.tileSound.src = "/assets/rockfall1.mp3"
         this.tileSound.load()
         this.tileSound.play()
-        
-        
+
+
         console.log("Changement d'état vers la demande de poser un voleur")
       } else {
         undefined
@@ -158,7 +159,7 @@ export class GameService {
     }
     this.currentTile.playerID = this.playerTurnIndex
     this.currentPlayer = this.playersArray[this.currentTile.playerID]
-    this.calculScoreAbbaye()
+
     return this.currentTile
   }
 
@@ -207,36 +208,33 @@ export class GameService {
   position: string
 
   voleurPosition() {
-    if (this.playersArray[this.playerTurnIndex].token > 0) {
-      switch (this.position) {
-        case ('Haut'):
-          this.currentTile.position = "Haut"
-          break
-        case ('Bas'):
-          this.currentTile.position = "Bas"
-          break
-        case ('Droite'):
-          this.currentTile.position = "Droite"
-          break
-        case ('Gauche'):
-          this.currentTile.position = "Gauche"
-          break
-        case ('Centre'):
-          this.currentTile.position = "Centre"
-          break
-        case ('Aucun'):
-          this.currentTile.position = "Aucun"
-          break
-      }
-      this.currentTile.playerID = this.playerTurnIndex
-      if (this.position != 'Aucun') {
-        this.playersArray[this.playerTurnIndex].token -= 1
-      }
-      this.checkAbbayeWithThief()
-      this.nextPlayer()
-
+    switch (this.position) {
+      case ('Haut'):
+        this.currentTile.position = "Haut"
+        break
+      case ('Bas'):
+        this.currentTile.position = "Bas"
+        break
+      case ('Droite'):
+        this.currentTile.position = "Droite"
+        break
+      case ('Gauche'):
+        this.currentTile.position = "Gauche"
+        break
+      case ('Centre'):
+        this.currentTile.position = "Centre"
+        break
+      case ('Aucun'):
+        this.currentTile.position = "Aucun"
+        break
     }
-    else { this.nextPlayer() }
+    this.currentTile.playerID = this.playerTurnIndex
+    if (this.position != 'Aucun') {
+      this.playersArray[this.playerTurnIndex].token -= 1
+    }
+    this.checkAbbayeWithThief()
+    this.calculScoreAbbaye()
+    this.nextPlayer()
   }
 
 
@@ -276,17 +274,15 @@ export class GameService {
   checkAbbayeWithThief() {
     if ((this.currentTile.name === 'pppp_1' || this.currentTile.name === 'pppp_2' || this.currentTile.name === 'pppp_3'
       || this.currentTile.name === 'pppp_4' || this.currentTile.name === 'pprp_1' || this.currentTile.name === 'pprp_2') && (this.position === 'Centre')) {
-      this.AbbayeWithThief.push([this.currentPlayer.name, this.currentTile.iPos, this.currentTile.jPos, false])
-
+      this.AbbayeWithThief.push([this.currentTile.playerID, this.currentTile.iPos, this.currentTile.jPos])
+      console.log("Tableau AbbayeWithThief :")
+      console.log(this.AbbayeWithThief)
     }
   }
 
   calculScoreAbbaye() {
-
     for (let item = 0; item < this.AbbayeWithThief.length; item++) {
-      let coordI: number = this.AbbayeWithThief[item][1]
-      let coordJ: number = this.AbbayeWithThief[item][2]
-
+      let [pId, coordI, coordJ] = this.AbbayeWithThief[item]
       if (this.map.cases[coordI + 1][coordJ - 1] &&
         this.map.cases[coordI + 1][coordJ] &&
         this.map.cases[coordI + 1][coordJ + 1] &&
@@ -295,15 +291,12 @@ export class GameService {
         this.map.cases[coordI - 1][coordJ - 1] &&
         this.map.cases[coordI - 1][coordJ] &&
         this.map.cases[coordI - 1][coordJ + 1]) {
-        if (this.AbbayeWithThief[item][3] === true) {
-          return
-        } else {
-          this.currentPlayer.score = this.currentPlayer.score + 9
-          this.AbbayeWithThief[item][3] = true
-        }
+        this.playersArray[pId].score += 9
+        this.AbbayeWithThief.splice(item, 1)
       }
     }
   }
+
 
   helpSentence: string
   helpText() {
@@ -324,17 +317,17 @@ export class GameService {
 
 
   getMusic() {
-  this.tileSound = new Audio()
+    this.tileSound = new Audio()
     this.tileSound.src = "/assets/homezik.mp3"
     this.tileSound.load()
     this.tileSound.play()
-    this.tileSound.loop=true
-    this.tileSound.volume=0.3
-}
+    this.tileSound.loop = true
+    this.tileSound.volume = 0.3
+  }
 
-  ngOnDestroy(){
-  this.tileSound.pause()
-  this.tileSound=null
-}
+  ngOnDestroy() {
+    this.tileSound.pause()
+    this.tileSound = null
+  }
 
 }
