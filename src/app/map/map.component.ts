@@ -23,7 +23,7 @@ export class MapComponent implements OnInit {
     zoomToFitZoomLevelFactor: 0.98,
     dragMouseButton: 'right',
   });
-  
+
   tileSound: any;
 
   constructor(private deck: DeckService, private game: GameService, private map: MapService) { }
@@ -31,6 +31,7 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.cases = this.map.generateMap()
     this.game.ngOnDestroy()
+    this.game.playerTurn()
   }
 
   
@@ -38,9 +39,9 @@ export class MapComponent implements OnInit {
     this.game.rotationTile()
   }
 
-  submitVoleur(){
-    this.game.voleurPosition()
-  }
+  // submitVoleur(){
+  //   this.game.voleurPosition()
+  // }
 
 }
 

@@ -2,7 +2,7 @@
 
   <div class="row text-center">
     <div class="col">
-      <img class="titre" src="../../assets/home/logo.png">
+      <img class="titre" src="../../assets/home/logo5.png">
     </div>
   </div>
   <div class="row">
@@ -18,7 +18,7 @@
 
         <h4 class="pickfamily text-center">Ajoutez un joueur</h4>
         <form (ngSubmit)="submitPlayer()" name="joueur">
-          <h4><label class="" for="user" class="text-center">Entrez votre nom</label></h4>
+          <h4><label class="entername" for="user" class="text-center">Entrez votre nom</label></h4>
           <input class="inputnom" name="user" type="text" [(ngModel)]="game.name" #user="ngModel" maxlength="10">
           <h4 class="pickfamily">Choisissez votre Famille</h4>
           <div>
@@ -45,7 +45,8 @@
 
       <div class="col-5 tableaujoueurs">
         <h4 class="placesleft text-center">Reste {{tableLength}} place(s) dans la partie</h4>
-        <div *ngFor="let player of game.playersArray">
+        <div class="nomJoueur" *ngFor="let player of game.playersArray">
+
           <td>
             <img class="familyimage" src="{{player.image}}" alt="">
           </td>

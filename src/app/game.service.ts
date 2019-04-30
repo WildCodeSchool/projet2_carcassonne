@@ -14,11 +14,9 @@ export class GameService {
   currentTile = undefined
   totalTile: number = tilesDeck.length
   currentRotation = 0
-  currentTileIndex = []
   checkSideState: boolean = undefined
-  playersLeft: number;
+  
   public tileSound: any;
-
 
   constructor(private deck: DeckService, private map: MapService) { }
 
@@ -140,7 +138,6 @@ export class GameService {
     return this.checkSideState = true
   }
 
-
   onTileClick(i, j) {
     // ligne pour ne poser qu'une seule fois
     if (this.map.cases[i][j] != null) { return; }
@@ -159,8 +156,10 @@ export class GameService {
       } else {
         undefined
       }
-
-    } return this.currentTile
+    }
+    this.currentTile.playerID = this.playerTurnIndex
+    this.currentPlayer = this.playersArray[this.currentTile.playerID]
+    return this.currentTile
   }
 
 
@@ -168,74 +167,103 @@ export class GameService {
   family: string
   playerReal: any = {};
   playersArray = [];
+  playersLeft: number;
 
 
   playersGame() {
     console.log()
     switch (this.family) {
       case ('arryn'):
-        this.playerReal = { name: this.name, image: "../assets/family/arryn.png", token: 7, score: 0 }
+        this.playerReal = { name: this.name, image: "/assets/family/arryn.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('greyjoy'):
-        this.playerReal = { name: this.name, image: "../assets/family/greyjoy.png", token: 7, score: 0 }
+        this.playerReal = { name: this.name, image: "/assets/family/greyjoy.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('lannister'):
-        this.playerReal = { name: this.name, image: "../assets/family/lannister.png", token: 7, score: 0 }
+        this.playerReal = { name: this.name, image: "/assets/family/lannister.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('stark'):
-        this.playerReal = { name: this.name, image: "../assets/family/stark.png", token: 7, score: 0 }
+        this.playerReal = { name: this.name, image: "/assets/family/stark.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       case ('targa'):
-        this.playerReal = { name: this.name, image: "../assets/family/targa.png", token: 7, score: 0 }
+        this.playerReal = { name: this.name, image: "/assets/family/targa.png", token: 7, score: 0 }
         this.playersArray.push(this.playerReal)
         console.log(this.playersArray)
         break
       default:
         console.log('erreur')
     }
+
     this.playersLeft = 5 - (this.playersArray.length)
+
   }
+
 
   position: string
 
   voleurPosition() {
     switch (this.position) {
       case ('Haut'):
-        return this.currentTile.position = "Haut"
+        this.currentTile.position = "Haut"
+        break
       case ('Bas'):
-        return this.currentTile.position = "Bas"
+        this.currentTile.position = "Bas"
+        break
       case ('Droite'):
-        return this.currentTile.position = "Droite"
+        this.currentTile.position = "Droite"
+        break
       case ('Gauche'):
-        return this.currentTile.position = "Gauche"
+        this.currentTile.position = "Gauche"
+        break
       case ('Centre'):
-        return this.currentTile.position = "Centre"
+        this.currentTile.position = "Centre"
+        break
       case ('Aucun'):
-        return this.currentTile.position = "Aucun"
+        this.currentTile.position = "Aucun"
+        break
+    } 
+    this.currentTile.playerID = this.playerTurnIndex
+    if (this.position != 'Aucun') {
+      this.playersArray[this.playerTurnIndex].token -= 1
     }
+    this.nextPlayer()
+    
   }
+   
+
 
   //game State machine
 
-  nbPlayer: number = 5;
-  players: number = 1;
+  playerTurnIndex = 0
+  currentPlayer = undefined
+
+  playerTurn() {
+    this.currentPlayer = this.playersArray[this.playerTurnIndex]
+    console.log(`Au tour de ${this.currentPlayer.name} de jouer`)
+    return this.currentPlayer
+  }
 
   nextPlayer() {
-    this.players += 1
-    if (this.players >= this.nbPlayer) {
-      this.players = 1
+    this.playerTurnIndex += 1
+
+    if (this.playerTurnIndex >= this.playersArray.length) {
+      this.playerTurnIndex = 0
     }
+
     this.currentState = this.STATE_PICK_TILE
     console.log("Changement d'état vers la pioche d'une tuile")
-    return this.players
+
+    this.currentPlayer = this.playersArray[this.playerTurnIndex]
+    console.log(`Au tour de ${this.currentPlayer.name} de jouer`)
+   
   }
 
   public readonly STATE_PICK_TILE = 'Piocher une carte'
@@ -263,3 +291,51 @@ export class GameService {
   
 
 }
+
+
+  //   thiefPosition = []
+  //   thiefI: number
+  //   thiefJ: number
+
+  //   checkScoreAbbaye(i, j) {
+  //     this.thiefPosition = [i, j]
+  //     this.thiefI = this.thiefPosition[i]
+  //     this.thiefJ = this.thiefPosition[j]
+  //     let abbayeDetection = this.map.cases[this.thiefI + 1][this.thiefJ - 1] &&
+  //                           this.map.cases[this.thiefI + 1][this.thiefJ] &&
+  //                           this.map.cases[this.thiefI + 1][this.thiefJ + 1] &&
+  //                           this.map.cases[this.thiefI][this.thiefJ - 1] &&
+  //                           this.map.cases[this.thiefI][this.thiefJ] &&
+  //                           this.map.cases[this.thiefI][this.thiefJ + 1] &&
+  //                           this.map.cases[this.thiefI - 1][this.thiefJ - 1] &&
+  //                           this.map.cases[this.thiefI - 1][this.thiefJ] &&
+  //                           this.map.cases[this.thiefI - 1][this.thiefJ + 1]
+  // if (abbayeDetection!=null){
+  //   this.playerReal.score = this.playerReal.score + 9
+  // }
+  //   }
+  //   checkScoreRoad(){
+  // let scoreRoad = 0
+  // if (this.deck.pickTile.name === 'pprp_1' ||
+  //     this.deck.pickTile.name === 'pprp_2' ||
+  //     this.deck.pickTile.name === 'prrr_1' ||
+  //     this.deck.pickTile.name === 'prrr_2' ||
+  //     this.deck.pickTile.name === 'prrr_3' ||
+  //     this.deck.pickTile.name === 'prrr_4' ||
+  //     this.deck.pickTile.name === 'rrrr' ||
+  //     this.deck.pickTile.name === 'vrrr_1' ||
+  //     this.deck.pickTile.name === 'vrrr_2' ||
+  //     this.deck.pickTile.name === 'vrrr_3' ||
+  //     this.deck.pickTile.name === 'vvrv_1' ||
+  //     this.deck.pickTile.name === 'vvrv_b_1' ||
+  //     this.deck.pickTile.name === 'vvrv_b_2'){
+
+  // while(this.deck.pickTile.name.indexOf('r')){
+  //   scoreRoad +=1
+  //   if ('une tuile a un voleur'){
+  //     this.playerReal.score = this.playerReal.score + scoreRoad
+  // }}
+  // }
+  //   }
+
+
