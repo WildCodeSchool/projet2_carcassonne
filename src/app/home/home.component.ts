@@ -9,14 +9,19 @@ import { DeckService } from '../deck.service';
 })
 export class HomeComponent implements OnInit {
   tableLength = 5
+  tileSound: HTMLAudioElement;
 
   constructor(private game: GameService, private deck: DeckService) { }
 
   submitPlayer() {
     if (this.tableLength > 0) {
-    this.game.playersGame()
-    this.tableLength -= 1
-  }
+      this.game.playersGame()
+      this.tableLength -= 1
+      this.tileSound = new Audio()
+      this.tileSound.src = "/assets/epeejoueur.mp3"
+      this.tileSound.load()
+      this.tileSound.play()
+    }
   }
 
   ngOnInit() {
