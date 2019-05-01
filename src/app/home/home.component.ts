@@ -1,13 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../game.service';
 import { DeckService } from '../deck.service';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { bounceInLeft, tada, zoomIn } from 'ng-animate';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('bounceInLeft', [transition('* => *', useAnimation(bounceInLeft))]),
+    trigger('zoomIn', [transition('* => *', useAnimation(zoomIn, {
+      params: { timing: 0.5 }
+    }))])
+  ],
 })
 export class HomeComponent implements OnInit {
+  bounceInLeft: any
+  tada: any
   tableLength = 5
   tileSound: any;
   

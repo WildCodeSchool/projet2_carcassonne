@@ -2,10 +2,10 @@
 .tilesleft {
   text-align: center;
   color: #374b9e;
-  font-size: 1.5em;
+  font-size: 1.6em;
   font-variant:small-caps;
   font-weight: bold;
-  text-shadow: 3px 3px 2px #fff
+  text-shadow: 1px 1px whitesmoke;
 }
 button {
   display: inline-block;
@@ -61,7 +61,8 @@ img {
 .pioche {
   width: 50%;
 }
-.picktile {
+.picktile,
+.rotatetile {
   margin-bottom: 20px;
 }
 

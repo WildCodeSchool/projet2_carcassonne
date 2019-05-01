@@ -15,7 +15,7 @@ export class GameService {
   totalTile: number = tilesDeck.length
   currentRotation = 0
   checkSideState: boolean = undefined
-
+  flipped = true
   public tileSound: any;
 
   constructor(private deck: DeckService, private map: MapService) { }
@@ -25,6 +25,9 @@ export class GameService {
     this.tileSound.src = "/assets/cardflop2.mp3"
     this.tileSound.load()
     this.tileSound.play()
+
+    
+    this.flipIt()
 
     if (this.totalTile <= 0) {
       this.currentTile = undefined
@@ -55,9 +58,12 @@ export class GameService {
       this.currentTile = undefined
       return
     }
-
   }
 
+  flipIt() {
+    this.currentTile = undefined
+    this.flipped = !this.flipped;
+  }
 
   rotationTile() {
     this.currentTile.rotation = (this.currentTile.rotation + 90) % 360;
@@ -150,8 +156,6 @@ export class GameService {
         this.tileSound.src = "/assets/rockfall1.mp3"
         this.tileSound.load()
         this.tileSound.play()
-
-
         console.log("Changement d'état vers la demande de poser un voleur")
       } else {
         undefined
@@ -159,7 +163,6 @@ export class GameService {
     }
     this.currentTile.playerID = this.playerTurnIndex
     this.currentPlayer = this.playersArray[this.currentTile.playerID]
-
     return this.currentTile
   }
 
@@ -235,6 +238,8 @@ export class GameService {
     this.checkAbbayeWithThief()
     this.calculScoreAbbaye()
     this.nextPlayer()
+    this.flipIt()
+    this.position = undefined
   }
 
 
