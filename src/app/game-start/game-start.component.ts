@@ -12,7 +12,7 @@ export class GameStartComponent implements OnInit {
 
     public startID: any;
    
-    constructor(private route: ActivatedRoute, private gs: GameService)  { }
+    constructor(private route: ActivatedRoute, public gs: GameService)  { }
    
     ngOnInit() {
 

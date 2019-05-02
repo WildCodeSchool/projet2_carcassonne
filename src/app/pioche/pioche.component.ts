@@ -4,7 +4,7 @@ import { DeckService } from '../deck.service';
 import { GameStateService } from '../game-state.service'
 import { tilesDeck, Tuile } from '../tuilesData';
 import { trigger, transition, useAnimation } from '@angular/animations';
-import { flip, fadeInRight, zoomIn, bounceInDown } from 'ng-animate';
+import { zoomIn } from 'ng-animate';
 
 
 @Component({
@@ -17,9 +17,9 @@ import { flip, fadeInRight, zoomIn, bounceInDown } from 'ng-animate';
 })
 export class PiocheComponent implements OnInit {
 
-  
+  zoomIn:any
 
-  constructor(private game: GameService,
+  constructor(public game: GameService,
     private deck: DeckService,
     private gameState: GameStateService) { }
 

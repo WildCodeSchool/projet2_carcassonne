@@ -8,7 +8,7 @@ import { GameService } from '../game.service';
 })
 export class HelpComponent implements OnInit {
 
-  constructor(private game: GameService) { }
+  constructor(public game: GameService) { }
   
   ngOnInit() {
   }

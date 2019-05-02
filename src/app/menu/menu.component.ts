@@ -15,7 +15,7 @@ import { flip, tada, zoomIn, bounceInDown } from 'ng-animate';
 export class MenuComponent implements OnInit {
  
 
-  constructor(private game: GameService) { }
+  constructor(public game: GameService) { }
   
   ngOnInit() {
     

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GameService } from '../game.service';
 import { DeckService } from '../deck.service';
 import { trigger, transition, useAnimation } from '@angular/animations';
-import { bounceInLeft, tada, zoomIn } from 'ng-animate';
+import { bounceInLeft, zoomIn } from 'ng-animate';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +17,9 @@ import { bounceInLeft, tada, zoomIn } from 'ng-animate';
 })
 export class HomeComponent implements OnInit {
   bounceInLeft: any
-  tada: any
   tableLength = 5
   tileSound: any;
+  zoomIn:any
   
   constructor(public game: GameService, private deck: DeckService) { }
 

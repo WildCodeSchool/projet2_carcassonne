@@ -14,7 +14,7 @@ export class MapComponent implements OnInit {
 
   cases = undefined
 
-  private panZoomConfig: PanZoomConfig = new PanZoomConfig({
+  public panZoomConfig: PanZoomConfig = new PanZoomConfig({
     zoomLevels: 4,
     scalePerZoomLevel: 1.5,
     initialPanX : -10000,
