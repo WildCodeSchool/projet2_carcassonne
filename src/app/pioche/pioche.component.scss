@@ -1,5 +1,12 @@
 /* Style des boutons */
-
+.tilesleft {
+  text-align: center;
+  color: #374b9e;
+  font-size: 1.6em;
+  font-variant:small-caps;
+  font-weight: bold;
+  text-shadow: 1px 1px whitesmoke;
+}
 button {
   display: inline-block;
   padding: 15px 25px;
@@ -9,10 +16,10 @@ button {
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #4caf50;
+  background-color: #374b9e;
   border: none;
   border-radius: 10px;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 9px rgb(73, 73, 73);
 }
 
 button:hover {
@@ -20,9 +27,28 @@ button:hover {
 }
 
 button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
+  background-color: #374b9e;
+  box-shadow: 0 5px rgb(73, 73, 73);
   transform: translateY(4px);
+}
+
+.btn.btn-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #20b879;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 9px rgb(73, 73, 73);
+}
+
+.btn.btn-primary:hover {
+  background-color: #b44d4d;
 }
 
 
@@ -34,6 +60,10 @@ img {
 
 .pioche {
   width: 50%;
+}
+.picktile,
+.rotatetile {
+  margin-bottom: 20px;
 }
 
 /* CSS pour la rotation de la tuile */
@@ -87,7 +117,6 @@ img {
     box-shadow:2px 2px 2px gray;
     backface-visibility: hidden;
   }
-  
   
   .flip-box-back {
     transform: rotateY(180deg);

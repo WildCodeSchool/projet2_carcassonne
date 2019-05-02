@@ -6,10 +6,10 @@ import { tilesDeck } from './tuilesData';
 })
 export class DeckService {
 
-
   constructor() { }
 
   pickTile() {
+    
     let numTile = Math.floor(Math.random() * tilesDeck.length)
     let keepNumTile = tilesDeck[numTile]
     const removedTiles = tilesDeck.splice(numTile, 1)

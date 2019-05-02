@@ -1,0 +1,35 @@
+.map {
+    position: absolute;
+    margin-top: 6%;
+}
+
+.pioche {
+    background: url(../../assets/pioche_fond/stone.JPG);
+    background: cover;
+    background-size: 100%;
+    position: fixed;
+    left: 80%;
+    bottom: 10%;
+    padding: 1% 1% 1% 1%;
+    z-index: 30;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px black;
+}
+
+.menu {
+    position: fixed;
+    width: 100%;
+    height: 15%;
+    z-index: 1;
+}
+.help {
+    background-image: url(/assets/pioche_fond/stone.JPG);
+    position: fixed;
+    width: 300px;
+    right: 80%;
+    bottom: 10%;
+    padding: 1% 1% 1% 1%;
+    z-index: 29;
+    border-radius: 10px;
+    box-shadow: 4px 4px 5px 2px black;
+}

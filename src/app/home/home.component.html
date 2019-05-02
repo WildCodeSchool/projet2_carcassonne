@@ -1,0 +1,66 @@
+<div class="background container-fluid">
+
+  <div class="row text-center">
+    <div class="col">
+      <img class="titre" src="/assets/home/logo5.png">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10">
+      <button [@zoomIn]="zoomIn" type="button" class="btn btn-dark start justify-content-center" *ngIf="4>tableLength"
+        routerLink="/game-start">Lancer
+        l'aventure</button>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="enterPlayer col-5">
+
+        <h4 class="add-player text-center">Ajoutez un joueur</h4>
+        <form (ngSubmit)="submitPlayer()" name="joueur">
+          <h4><label class="entername text-center" for="user">Entrez votre nom</label></h4>
+          <input class="inputnom" name="user" type="text" [(ngModel)]="game.name" #user="ngModel" maxlength="10">
+          <span style="color:whitesmoke" *ngIf="game.name?.length >= 10">
+            10 lettres maximum
+          </span>
+          <h4 class="pickfamily">Choisissez votre Famille</h4>
+          <div>
+            <input type="radio" [(ngModel)]="game.family" name="family" value="arryn" class="family" id="arryn">
+            <label for="arryn"><img class="familyimage" src="../../assets/family/arryn.png" alt="arryn"></label>
+
+            <input type="radio" [(ngModel)]="game.family" name="family" value="greyjoy" class="family" id="greyjoy">
+            <label for="greyjoy"><img class="familyimage" src="../../assets/family/greyjoy.png" alt="greyjoy"></label>
+
+            <input type="radio" [(ngModel)]="game.family" name="family" value="lannister" class="family" id="lannister">
+            <label for="lannister"><img class="familyimage" src="../../assets/family/lannister.png"
+                alt="lannister"></label>
+
+            <input type="radio" [(ngModel)]="game.family" name="family" value="stark" class="family" id="stark">
+            <label for="stark"><img class="familyimage" src="../../assets/family/stark.png" alt="stark"></label>
+
+            <input type="radio" [(ngModel)]="game.family" name="family" value="targa" class="family" id="targa">
+            <label for="targa"><img class="familyimage" src="../../assets/family/targa.png" alt="targa"></label>
+          </div>
+          <br>
+          <button class="btn btn-dark validate" type="submit">valider le joueur</button>
+        </form>
+      </div>
+
+      <div class="col-5 tableaujoueurs">
+        <h4 class="placesleft text-center">Reste {{tableLength}} place(s) dans la partie</h4>
+        <div [@bounceInLeft]="bounceInLeft" class="nomJoueur" *ngFor="let player of game.playersArray">
+
+          <td>
+            <img class="familyimage" src="{{player.image}}" alt="">
+          </td>
+          <td>
+            <h4>{{player.name}}</h4>
+          </td>
+        </div>
+      </div>
+      <div class="col-1"></div>
+
+    </div>
+  </div>
+</div>

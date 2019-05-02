@@ -1,13 +1,13 @@
 .row {
-    width: max-content;
-    display: flex;
-    flex-direction: row;
+  width: max-content;
+  display: flex;
+  flex-direction: row;
 }
 .cell {
   display: block;
   height: 150px;
   width: 150px;
-  border: solid gray 1px;
+  border: dotted 0.5px #935116;
 }
 
 .tuile {
@@ -20,6 +20,7 @@
 
 #container {
   overflow: hidden;
+  position: absolute;
 }
 
 .rotate90 {
@@ -37,3 +38,59 @@
   -webkit-transform: rotate(270deg) translateX(-100%);
   -ms-transform: rotate(270deg) translateX(-100%);
 }
+
+.container-fluid {
+  height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+    background-image: url(../../assets/map/fondmap2.jpg);
+    opacity: 1;
+    width: 100%;
+    background: cover;
+}
+
+
+.imgModalVoleur {
+  position: relative;
+}
+
+.voleurHaut {
+position: relative;
+top: -94%;
+right: -37%;
+width: 45px;
+}
+
+.voleurDroite {
+position: relative;
+top: -60%;
+right: -66%;
+width: 45px;
+}
+
+.voleurBas {
+position: relative;
+bottom: 33%;
+right: -38%;
+width: 45px;
+}
+
+.voleurGauche {
+position: relative;
+top: -60%;
+left: 9%;
+width: 45px;
+}
+
+.voleurCentre {
+position: relative;
+top: -60%;
+right: -38%;
+width: 45px;
+}
+
+.voleurAucun {
+display: none;
+}
+

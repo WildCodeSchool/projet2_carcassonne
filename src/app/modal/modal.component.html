@@ -1,23 +1,46 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Souhaitez-vous poser un voleur ?</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
-    </button>
+    </button> -->
   </div>
-  <div class="modal-body">
-    <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
-      <label ngbButtonLabel class="btn-primary">
-        <input ngbButton type="radio" [value]="Oui"> Oui
-      </label>
-      <label ngbButtonLabel class="btn-primary">
-        <input ngbButton type="radio" [value]="Non"> Non
-      </label>
+  <form (ngSubmit)="submitVoleur()" name="voleur">
+    <div class="modal-body text-center">
+      <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
+        <div class='container'>
+          <label *ngIf="game.currentTile.top != 'prairie'" ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Haut"> en haut
+          </label>
+          <label *ngIf="game.currentTile.right != 'prairie'" ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Droite"> à droite
+          </label>
+          <label *ngIf="game.currentTile.bottom != 'prairie'" ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Bas"> en bas
+          </label>
+          <label *ngIf="game.currentTile.left != 'prairie'" ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Gauche"> à gauche
+          </label>
+          <label
+            *ngIf="game.currentTile.name === 'pppp_1' || game.currentTile.name === 'pppp_2' || game.currentTile.name === 'pppp_3' || game.currentTile.name === 'pppp_4' || game.currentTile.name === 'pprp_1' || game.currentTile.name === 'pprp_2'"
+            ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Centre"> au centre
+          </label>
+          <label ngbButtonLabel class="btn-primary mr-1 ml-1">
+            <input ngbButton [(ngModel)]="game.position" type="radio" name="pos" value="Aucun"> aucun
+          </label>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Enregistrer le choix</button>
-  </div>
+    <div class="text-center imgModalVoleur">
+      <img class="imgModal" id='image' src="{{game.currentTile.img}}"
+        [ngClass]="{'rotate90': game.currentRotation == 90, 'rotate180': game.currentRotation == 180, 'rotate270': game.currentRotation == 270}">
+      <img *ngIf="game.position != null" src="{{game.currentPlayer.image}}"
+        [ngClass]="{'voleurHaut': game.position === 'Haut', 'voleurBas': game.position === 'Bas', 'voleurDroite': game.position === 'Droite', 'voleurGauche': game.position === 'Gauche', 'voleurCentre': game.position === 'Centre', 'voleurAucun': game.position === 'Aucun'}">
+    </div>
+    <div class="modal-footer justify-content-center">
+      <button *ngIf="game.position" type="submit" class="btn btn-outline-dark" (click)="c('Save click');submitVoleur()">Validez ce
+        choix</button>
+    </div>
+  </form>
 </ng-template>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Lancer la modal</button>
