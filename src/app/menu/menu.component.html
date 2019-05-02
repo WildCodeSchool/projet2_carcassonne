@@ -2,11 +2,11 @@
     <div class="row">
         <img id="logo" src="/assets/logo5nav.png">
         <div *ngFor="let player of game.playersArray">
-            <div class="playerName">
+            <div [@bounceInDown]="bounceInDown" class="playerName">
                 <td>
                     <tr><img class="imageTeam" src="{{player.image}}"></tr>
                 </td>
-                <td>
+                <td >
                     <h3>{{player.name}}</h3>
                     <tr> Score : {{player.score}}</tr>
                     <tr>Voleurs : {{player.token}}</tr>

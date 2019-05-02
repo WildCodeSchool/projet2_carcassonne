@@ -3,15 +3,21 @@ import { GameService } from '../game.service';
 import { DeckService } from '../deck.service';
 import { GameStateService } from '../game-state.service'
 import { tilesDeck, Tuile } from '../tuilesData';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { flip, fadeInRight, zoomIn, bounceInDown } from 'ng-animate';
+
 
 @Component({
   selector: 'app-pioche',
   templateUrl: './pioche.component.html',
-  styleUrls: ['./pioche.component.scss']
+  styleUrls: ['./pioche.component.scss'],
+  animations: [
+    trigger('zoomIn', [transition('* => *', useAnimation(zoomIn))]),
+  ],
 })
 export class PiocheComponent implements OnInit {
 
-  flipped = true
+  
 
   constructor(private game: GameService,
     private deck: DeckService,
@@ -26,8 +32,6 @@ export class PiocheComponent implements OnInit {
   }
 
   
-  flipIt() {
-    this.flipped = !this.flipped;
-  }
+
 
 }

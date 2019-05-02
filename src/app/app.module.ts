@@ -19,7 +19,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { Ng2PanZoomModule } from 'ng2-panzoom';
 import { RulesComponent } from './rules/rules.component';
 import { HelpComponent } from './help/help.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
 
@@ -73,7 +73,8 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     ButtonsModule.forRoot(),
-    Ng2PanZoomModule
+    Ng2PanZoomModule,
+    BrowserAnimationsModule
   ],
   providers: [GameService, DeckService, MapService, NgbModal],
   bootstrap: [AppComponent]
