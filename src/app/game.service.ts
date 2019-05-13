@@ -323,7 +323,7 @@ export class GameService {
 
   getMusic() {
     this.tileSound = new Audio()
-    this.tileSound.src = "/assets/homezik.mp3"
+    this.tileSound.src = "./assets/homezik.mp3"
     this.tileSound.load()
     this.tileSound.play()
     this.tileSound.loop = true
